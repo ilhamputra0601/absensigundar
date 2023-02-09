@@ -56,6 +56,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'Ricky Student2'
         ]);
 
+        Student::create([
+            'classroom_id' => 3,
+            'npm' => '56418104',
+            'name' => 'Ricky Student3'
+        ]);
+
         User::create([
             'usertype_id' => 1,
             'name' => 'Ricky Admin',
@@ -210,6 +216,24 @@ class DatabaseSeeder extends Seeder
             Absent::create([
                 'schedule_id' => 1,
                 'student_id' => 1,
+                'absenttype_id' => null,
+                'week' => $i
+            ]);
+        }
+
+        for($i=1;$i<=14; $i++){
+            Absent::create([
+                'schedule_id' => 1,
+                'student_id' => 2,
+                'absenttype_id' => null,
+                'week' => $i
+            ]);
+        }
+
+        for($i=1;$i<=14; $i++){
+            Absent::create([
+                'schedule_id' => 2,
+                'student_id' => 3,
                 'absenttype_id' => null,
                 'week' => $i
             ]);

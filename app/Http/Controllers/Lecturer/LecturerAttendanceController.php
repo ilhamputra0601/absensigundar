@@ -9,6 +9,7 @@ use App\Models\Schedule;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Symfony\Component\Console\Input\Input;
 
 class LecturerAttendanceController extends Controller
 {
@@ -25,26 +26,36 @@ class LecturerAttendanceController extends Controller
     public function detail(Request $request){
         $schedule_id = $request->input('schedule_id');
         $week = $request->input('week');
-
         $schedule = Schedule::where('id', $schedule_id)->first();
-        $classroom_name = $schedule->classroom_name;
-        $classroom = Classroom::where('name',$classroom_name)->first();
         $course = Course::where('name', $schedule->course_name)->first();
+        $dummyabsent = Absent::where('schedule_id', $schedule->id)->where('week',$week)->first();
         $absents = Absent::where('schedule_id', $schedule->id)->where('week',$week)->get();
 
         return view('dashboard.lecturer.attendancedetail',[
             'page' => 'Dashboard Dosen',
             'week' => $week,
-            'classroom' => $classroom,
             'course' => $course,
-            'location_name' => $schedule->location_name,
-            'time_description' => $schedule->time_description,
+            'dummyabsent' => $dummyabsent,
             'absents' => $absents
         ]);
     }
 
     public function change(Request $request){
         $week = $request->input('week');
-        dd($request);
+        $attendance = $request->input('attendance');
+        $attendancelength = count($attendance);
+        $schedule_id = $request->input('schedule_id');
+
+        foreach($attendance as $key => $value){
+            for ($i=0; $i<$attendancelength; $i++){
+                $data = [
+                    'student_id' => $key,
+                    'absenttype_id' => $value
+                    ];
+                Absent::where('schedule_id',$schedule_id)->where('student_id',$key)->where('week',$week)->update($data);
+            }
+            $attendance = array_splice($attendance,1);
+        };
+        return back()->with('success','Absen Telah Di Update');
     }
 }
