@@ -22,6 +22,8 @@ class User extends Authenticatable
         'usertype_id',
         'email',
         'password',
+        'nidn',
+        'npm'
     ];
 
     /**

@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->char('nidn',10)->unique()->nullable();
+            $table->char('npm',8)->unique()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

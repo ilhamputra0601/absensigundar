@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Lecturer\LecturerAttendanceController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -73,11 +74,9 @@ Route::get('/dashboardlecturer', function () {
         'page' => 'Dashboard Dosen'
         ]);
 })->middleware(['auth', 'usertypecheck:lecturer']);
-Route::get('/dashboardlecturer/attendance', function () {
-    return view('dashboard.lecturer.attendance',[
-        'page' => 'Dashboard Dosen'
-        ]);
-})->middleware(['auth', 'usertypecheck:lecturer']);
+Route::get('/dashboardlecturer/attendance', [LecturerAttendanceController::class,'create'])->middleware(['auth', 'usertypecheck:lecturer']);
+Route::get('/dashboardlecturer/attendancedetail', [LecturerAttendanceController::class,'detail'])->middleware(['auth', 'usertypecheck:lecturer']);
+Route::post('/dashboardlecturer/attendancedetail', [LecturerAttendanceController::class,'change'])->middleware(['auth', 'usertypecheck:lecturer']);
 Route::get('/dashboardlecturer/utslist', function () {
     return view('dashboard.lecturer.utslist',[
         'page' => 'Dashboard Dosen'

@@ -2,12 +2,19 @@
 
 namespace Database\Seeders;
 
+use App\Models\Time;
 use App\Models\User;
+use App\Models\Major;
+use App\Models\Absent;
+use App\Models\Course;
+use App\Models\Faculty;
 use App\Models\Student;
-
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Lecturer;
+use App\Models\Location;
+use App\Models\Schedule;
 use App\Models\Usertype;
+use App\Models\Classroom;
+use App\Models\Absenttype;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -30,6 +37,25 @@ class DatabaseSeeder extends Seeder
             'type' => 'student'
         ]);
 
+        //dummy excel
+        Lecturer::create([
+            'nidn' => '1234567890',
+            'name' => 'Ricky Dosen'
+        ]);
+
+        //dummy excel
+        Student::create([
+            'classroom_id' => 1,
+            'npm' => '56418102',
+            'name' => 'Ricky Student'
+        ]);
+
+        Student::create([
+            'classroom_id' => 1,
+            'npm' => '56418103',
+            'name' => 'Ricky Student2'
+        ]);
+
         User::create([
             'usertype_id' => 1,
             'name' => 'Ricky Admin',
@@ -37,14 +63,156 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('12345678')
         ]);
 
-        Lecturer::create([
-            'NIDN' => '1234567890',
-            'name' => 'Ricky Dosen'
+        User::create([
+            'usertype_id' => 2,
+            'name' => 'Ricky Dosen',
+            'email' => 'ricky.dosen@gmail.com',
+            'password' => Hash::make('12345678'),
+            'nidn' => '1234567890'
         ]);
 
-        Student::create([
-            'npm' => '56418102',
-            'name' => 'Ricky Student'
+        User::create([
+            'usertype_id' => 3,
+            'name' => 'Ricky Mahasiswa',
+            'email' => 'ricky.mahasiswa@gmail.com',
+            'password' => Hash::make('12345678'),
+            'npm' => '56418102'
         ]);
+
+        for ($i = 1; $i <= 28; $i++) {
+            $region = null;
+
+            if ($i <= 20) {
+                $region = 'Depok';
+            } elseif ($i <= 27) {
+                $region = 'Kalimalang';
+            } else {
+                $region = 'Cengkareng';
+            }
+
+            Classroom::insert([
+                'name' => '1ia' . str_pad($i, 2, '0', STR_PAD_LEFT),
+                'region' => $region,
+                'major_id' => 1
+            ]);
+        }
+
+        for ($i = 1; $i <= 28; $i++) {
+            $region = null;
+
+            if ($i <= 19) {
+                $region = 'Depok';
+            } elseif ($i <= 26) {
+                $region = 'Kalimalang';
+            } else {
+                $region = 'Cengkareng';
+            }
+
+            Classroom::insert([
+                'name' => '2ia' . str_pad($i, 2, '0', STR_PAD_LEFT),
+                'region' => $region,
+                'major_id' => 1
+            ]);
+        }
+
+        for ($i = 1; $i <= 21; $i++) {
+            $region = null;
+
+            if ($i <= 15) {
+                $region = 'Depok';
+            } elseif ($i <= 20) {
+                $region = 'Kalimalang';
+            } else {
+                $region = 'Cengkareng';
+            }
+
+            Classroom::insert([
+                'name' => '3ia' . str_pad($i, 2, '0', STR_PAD_LEFT),
+                'region' => $region,
+                'major_id' => 1
+            ]);
+        }
+
+        for ($i = 1; $i <= 23; $i++) {
+            $region = null;
+            if ($i <= 16) {
+                $region = 'Depok';
+            } elseif ($i <= 22) {
+                $region = 'Kalimalang';
+            } else {
+                $region = 'Cengkareng';
+            }
+            Classroom::insert([
+                'name' => '2ia' . str_pad($i, 2, '0', STR_PAD_LEFT),
+                'region' => $region,
+                'major_id' => 1
+            ]);
+        }
+
+        Faculty::create([
+            'name' => 'Teknik Industri'
+        ]);
+
+        Major::create([
+            'name' => 'Teknik Informatika',
+            'faculty_id' => 1
+        ]);
+
+        Course::create([
+            'major_id' => 1,
+            'coursecode' => 'HM045101',
+            'name' => 'Ilmu Budaya Dasar',
+            'academicyear' => '2012',
+            'SKS' => '1',
+            'semester' => 1
+        ]);
+
+        Location::create([
+            'name' => 'Kampus E'
+        ]);
+
+        Time::create([
+            'timecode' => 'SEN1',
+            'description' => 'Senin 08.00 - 09.00'
+        ]);
+
+        //dummy excel
+        Schedule::create([
+            'classroom_name' => '1ia01',
+            'course_name' => 'Ilmu Budaya Dasar',
+            'location_name' => 'Kampus D',
+            'time_description' => 'Senin 08.00 - 09.00',
+            'lecturer_nidn' => '1234567890'
+        ]);
+
+        Schedule::create([
+            'classroom_name' => '1ia03',
+            'course_name' => 'Ilmu Budaya Dasar',
+            'location_name' => 'Kampus D',
+            'time_description' => 'Senin 09.00 - 10.00',
+            'lecturer_nidn' => '1234567890'
+        ]);
+
+        Absenttype::create([
+            'name' => 'Hadir'
+        ]);
+        Absenttype::create([
+            'name' => 'Alpa'
+        ]);
+        Absenttype::create([
+            'name' => 'Izin'
+        ]);
+        Absenttype::create([
+            'name' => 'Sakit'
+        ]);
+
+        for($i=1;$i<=14; $i++){
+            Absent::create([
+                'schedule_id' => 1,
+                'student_id' => 1,
+                'absenttype_id' => null,
+                'week' => $i
+            ]);
+        }
     }
 }
