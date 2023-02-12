@@ -13,6 +13,7 @@ use Symfony\Component\Console\Input\Input;
 
 class LecturerAttendanceController extends Controller
 {
+    // RickyJonnaMoryKembaren
     public function create(){
         $lecturer = Lecturer::where('nidn', auth()->user()->nidn)->first();
         $schedules = Schedule::where('lecturer_nidn', $lecturer->nidn)->get();
