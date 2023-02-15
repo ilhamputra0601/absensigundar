@@ -12,4 +12,8 @@ class Schedule extends Model
     public function absents(){
         return $this->hasMany(Absent::class);
     }
+
+    public function course(){
+        return $this->belongsTo(Course::class,'course_name','name');
+    }
 }

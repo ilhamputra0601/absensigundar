@@ -16,16 +16,13 @@
         <!-- Sales Card -->
         <div class="card info-card ">
             <div class="card-body">
-                <h5 class="card-title text-center">SELAMAT DATANG DI<br> <span>WEB ABSENSI GUNADARMA</span></h5>
-
-                <div class="d-flex text-start justify-center">
-                    <ul class="list-unstyled">
-                        <li>1. Untuk mengisi,mengedit,melihat hasil absensi silahkan klik tombol absensi</li>
-                        <li>2. Untuk mengolah laman mhs silakan klik blabla....</li>
-                        <br>
-                        <li>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
-                    </ul>
-                </div>
+                <h5 class="card-title">SELAMAT DATANG DI<br> WEB ABSENSI GUNADARMA</h5>
+                <ul class="list-unstyled">
+                    <li>1. Untuk mengisi,mengubah,mengatur akun dosen silahkan klik tombol Pengaturan Dosen</li>
+                    <li>2. Untuk mengisi,mengubah,mengatur akun mahasiswa silahkan klik tombol Pengaturan Mahasiswa</li>
+                    <li>3. Untuk melihat persentase kehadiran mahasiswa informatika klik tombol Data Absensi</li>
+                    <li>4. Untuk mengatur profile klik nama&email diatas, lalu klik profile</li>
+                </ul>
             </div>
         </div>
         <section>

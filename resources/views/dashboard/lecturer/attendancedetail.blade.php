@@ -8,7 +8,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dashboardlecturer">{{ $page }}</a></li>
                     <li class="breadcrumb-item"><a href="/dashboardlecturer/attendance">Presensi</a></li>
-                    <li class="breadcrumb-item active">{{ $dummyabsent->schedule->classroom_name }}</li>
+                    <li class="breadcrumb-item active">{{ $absents->first()->schedule->classroom_name }}</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -22,48 +22,50 @@
                 <div class="row mb-4">
                     <div class="col">
                         <label class="form-label" for="form6Example1">Kelas :
-                            {{ $dummyabsent->schedule->classroom_name }}</label>
+                            {{ $absents->first()->schedule->classroom_name }}</label>
                     </div>
                     <div class="col">
                         <label class="form-label" for="form6Example1">Matakuliah :
-                            {{ $dummyabsent->schedule->course_name }}</label>
+                            {{ $absents->first()->schedule->course_name }}</label>
                     </div>
                     <div class="col">
-                        <label class="form-label" for="form6Example1">Minggu Ke- : {{ $dummyabsent->week }}</label>
+                        <label class="form-label" for="form6Example1">Minggu Ke- : {{ $absents->first()->week }}</label>
                     </div>
                 </div>
                 <div class="row mb-4">
                     <div class="col">
                         <label class="form-label" for="form6Example1">Fakultas :
-                            {{ $dummyabsent->student->classroom->major->faculty->name }}</label>
+                            {{ $absents->first()->student->classroom->major->faculty->name }}</label>
                     </div>
                     <div class="col">
-                        <label class="form-label" for="form6Example1">SKS : {{ $course->SKS }}</label>
+                        <label class="form-label" for="form6Example1">SKS :
+                            {{ $absents->first()->schedule->course->SKS }}</label>
                     </div>
                     <div class="col">
                         <label class="form-label" for="form6Example1">Lokasi Kuliah :
-                            {{ $dummyabsent->schedule->location_name }}</label>
+                            {{ $absents->first()->schedule->location_name }}</label>
                     </div>
 
                 </div>
                 <div class="row mb-4">
                     <div class="col">
                         <label class="form-label" for="form6Example1">Jurusan :
-                            {{ $dummyabsent->student->classroom->major->name }}</label>
+                            {{ $absents->first()->student->classroom->major->name }}</label>
                     </div>
                     <div class="col">
-                        <label class="form-label" for="form6Example1">Tahun Ajaran : {{ $course->academicyear }}</label>
+                        <label class="form-label" for="form6Example1">Tahun Ajaran :
+                            {{ $absents->first()->schedule->course->academicyear }}</label>
                     </div>
                     <div class="col">
                         <label class="form-label" for="form6Example1">Jam Perkuliahan :
-                            {{ $dummyabsent->schedule->time_description }}</label>
+                            {{ $absents->first()->schedule->time_description }}</label>
                     </div>
 
                 </div>
                 <div class="row mb-4 ">
                     <div class="col">
                         <label class="form-label" for="form6Example1">Region :
-                            {{ $dummyabsent->student->classroom->region }}</label>
+                            {{ $absents->first()->student->classroom->region }}</label>
                     </div>
                 </div>
             </div>
@@ -72,8 +74,8 @@
             <h5 class="card-title">Table Presensi</h5>
             <form action="/dashboardlecturer/attendancedetail" method="post">
                 @csrf
-                <input type="hidden" name="week" value="{{ $dummyabsent->week }}">
-                <input type="hidden" name="schedule_id" value="{{ $dummyabsent->schedule_id }}">
+                <input type="hidden" name="week" value="{{ $absents->first()->week }}">
+                <input type="hidden" name="schedule_id" value="{{ $absents->first()->schedule_id }}">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -117,7 +119,9 @@
                                             name="attendance[{{ $absent->student_id }}]">
                                     </div>
                                 </td>
-                                <td>{{ $absent->absenttype->name }}</td>
+                                @isset($absent->absenttype->name)
+                                    <td>{{ $absent->absenttype->name }}</td>
+                                @endisset
                             </tr>
                         @endforeach
                     </tbody>

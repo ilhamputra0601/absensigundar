@@ -15,6 +15,7 @@ use App\Models\Schedule;
 use App\Models\Usertype;
 use App\Models\Classroom;
 use App\Models\Absenttype;
+use App\Models\Dashboard;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -238,5 +239,14 @@ class DatabaseSeeder extends Seeder
                 'week' => $i
             ]);
         }
+
+        Dashboard::create([
+            'usertype_id' => 2,
+            'body' => 'Ini Dashboard Dosen'
+        ]);
+        Dashboard::create([
+            'usertype_id' => 3,
+            'body' => 'Ini Dashboard Mahasiswa'
+        ]);
     }
 }

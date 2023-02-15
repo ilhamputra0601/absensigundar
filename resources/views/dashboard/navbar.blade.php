@@ -4,7 +4,7 @@
       <div class="d-flex align-items-center justify-content-between">
           <a href="#" class="logo d-flex align-items-center">
               <img src="../img/gundar.png" alt="gundar">
-              <span class="d-none d-lg-block">{{ $page }}</span>
+              <span class="d-none d-lg-block">Website Absensi Gunadarma</span>
           </a>
           <i class="bi bi-list toggle-sidebar-btn"></i>
       </div>
@@ -12,33 +12,21 @@
       <nav class="header-nav ms-auto">
           <ul class="d-flex align-items-center">
               <li class="nav-item dropdown pe-3">
-                  <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
-                      data-bs-toggle="dropdown">
+                  <a class="nav-link nav-profile d-flex align-items-center" href="#" data-bs-toggle="dropdown">
                       {{-- <img src="../assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> --}}
+                      <h6>{{ auth()->user()->name }}
+                          <br>
+                          <span>{{ auth()->user()->email }}</span>
+                      </h6>
+                  </a>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item" href="/dashboard/profile">Profile</a>
+                      <form method="POST" action="{{ route('logout') }}">
+                          @csrf
+                          <button type="submit" class="dropdown-item">Logout</button>
+                      </form>
+                  </div>
               </li>
-              <ul>
-                  <li class="p-3">
-                      <span>{{ auth()->user()->name }}</span>
-                      <h6>{{ auth()->user()->email }}</h6>
-                  </li>
-              </ul>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  @if (Request::is('dashboardadmin*'))
-                      <a class="dropdown-item" href="/dashboardadmin/profile">Profile</a>
-                  @endif
-                  @if (Request::is('dashboardlecturer*'))
-                      <a class="dropdown-item" href="/dashboardlecturer/profile">Profile</a>
-                  @endif
-                  @if (Request::is('dashboardstudent*'))
-                      <a class="dropdown-item" href="/dashboardstudent/profile">Profile</a>
-                  @endif
-                  <form method="POST" action="{{ route('logout') }}">
-                      @csrf
-                      <button type="submit" class="dropdown-item">Logout</button>
-                  </form>
-              </div>
-
           </ul>
       </nav>
   </header>
@@ -55,24 +43,23 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link {{ Request::is('dashboardadmin/editdashboardlecturer') ? '' : 'collapsed' }} "
-                      href="/dashboardadmin/editdashboardlecturer">
+                  <a class="nav-link {{ Request::is('dashboardadmin/lecturersetting') ? '' : 'collapsed' }} "
+                      href="/dashboardadmin/lecturersetting">
                       <i class="bi bi-person"></i>
-                      <span>Ubah Dashboard Dosen</span>
+                      <span>Pengaturan Dosen</span>
                   </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link {{ Request::is('dashboardadmin/editdashboardstudent') ? '' : 'collapsed' }}"
-                      href="/dashboardadmin/editdashboardstudent">
+                  <a class="nav-link {{ Request::is('dashboardadmin/studentsetting') ? '' : 'collapsed' }}"
+                      href="/dashboardadmin/studentsetting">
                       <i class="bi bi-person"></i>
-                      <span>Ubah Dashboard Mahasiswa</span>
+                      <span>Pengaturan Mahasiswa</span>
                   </a>
               </li>
               <li class="nav-item">
                   <a class="nav-link {{ Request::is('dashboardadmin/uts', 'dashboardadmin/uas') ? '' : 'collapsed' }}"
                       data-bs-target="#charts-nav" data-bs-toggle="collapse">
-                      <i class="bi bi-bar-chart"></i><span>Olah Data Absensi</span><i
-                          class="bi bi-chevron-down ms-auto"></i>
+                      <i class="bi bi-bar-chart"></i><span>Data Absensi</span><i class="bi bi-chevron-down ms-auto"></i>
                   </a>
                   <ul id="charts-nav"
                       class="nav-content {{ Request::is('dashboardadmin/uts', 'dashboardadmin/uas') ? '' : 'collapse' }}">
@@ -82,8 +69,7 @@
                           </a>
                       </li>
                       <li>
-                          <a class="{{ Request::is('dashboardadmin/uas') ? 'active' : '' }}"
-                              href="/dashboardadmin/uas">
+                          <a class="{{ Request::is('dashboardadmin/uas') ? 'active' : '' }}" href="/dashboardadmin/uas">
                               <i class="bi bi-circle"></i><span>UAS</span>
                           </a>
                       </li>

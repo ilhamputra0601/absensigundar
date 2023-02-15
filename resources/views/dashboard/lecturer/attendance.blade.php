@@ -18,8 +18,8 @@
                 <div class="row mb-4">
                     <div class="col">
                         <label for="classroom_name" class="form-label">Pilih Kelas</label>
-                        <select id="classroom_name" class="form-select" name="schedule_id">
-                            <option value="">--Pilih Kelas--</option>
+                        <select id="classroom_name" class="form-select" name="schedule_id" required>
+                            <option value="" style="display: none;">--Pilih Kelas--</option>
                             @foreach ($schedules as $schedule)
                                 <option value="{{ $schedule->id }}">{{ $schedule->classroom_name }}</option>
                             @endforeach
@@ -27,9 +27,10 @@
                     </div>
                     <div class="col">
                         <label for="week" class="form-label">Minggu ke-</label>
-                        <select id="week" name="week" class="form-select">
-                            <option value="">--Minggu ke--</option>
-                            <option value="1">1</option>
+                        <select id="week" name="week" class="form-select" required>
+                            <option value="" style="display: none;">--Minggu ke--</option>
+                            <option value="1">1
+                            </option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
@@ -47,10 +48,77 @@
                     </div>
                     <div class="col">
                         <br>
-                        <button class="btn btn-primary" type="submit">Cari</button>
+                        <button id="submit-button" class="btn btn-primary" type="submit">Cari</button>
                     </div>
                 </div>
             </form>
+        </section>
+        <section id="hamz" class="section" style="margin-bottom:100px;">
+            <div>
+                <div class="row mb-4">
+                    <div class="col">
+                        <label class="form-label" for="form6Example1">Kelas :
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="form6Example1">Matakuliah :
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="form6Example1">Minggu Ke- : </label>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col">
+                        <label class="form-label" for="form6Example1">Fakultas :
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="form6Example1">SKS : </label>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="form6Example1">Lokasi Kuliah :
+                        </label>
+                    </div>
+
+                </div>
+                <div class="row mb-4">
+                    <div class="col">
+                        <label class="form-label" for="form6Example1">Jurusan :
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="form6Example1">Tahun Ajaran : </label>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="form6Example1">Jam Perkuliahan :
+                        </label>
+                    </div>
+
+                </div>
+                <div class="row mb-4 ">
+                    <div class="col">
+                        <label class="form-label" for="form6Example1">Region :
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            {{-- inputan absensi belom --}}
+            <h5 class="card-title ">Table Presensi</h5>
+            @csrf
+            <input type="hidden" name="week" value="">
+            <input type="hidden" name="schedule_id" value="">
+            <table class="table table-bordered ">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Minggu ke</th>
+                        <th scope="col">Keterangan</th>
+                    </tr>
+                </thead>
+            </table>
+            </div>
         </section>
     </main>
 @endsection
