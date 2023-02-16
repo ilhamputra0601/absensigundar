@@ -53,7 +53,7 @@
     <script src="../assets/vendor/php-email-form/validate.js"></script>
     <!-- Template Main JS File -->
     <script src="../assets/js/main.js"></script>
-    // No upload from trix
+    {{-- No upload from trix --}}
     <script>
         document.addEventListener('trix-file-accept', function(e) {
             e.preventDefault();

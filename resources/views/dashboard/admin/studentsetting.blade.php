@@ -30,10 +30,14 @@
                     <button type="submit" class="btn btn-primary mt-2">Ubah</button>
                 </form>
                 <h5 class="card-title">Atur Database</h5>
-                <div class="mb-3">
-                    <label class="form-label" for="customFile">Masukan/Perbarui List Mahasiswa</label>
-                    <input type="file" class="form-control" id="customFile" />
-                </div>
+                <form action="/dashboardadmin/studentimport" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <label class="form-label" for="customFile">Masukan/Perbarui List Mahasiswa</label>
+                        <input type="file" class="form-control" id="customFile" name="file" />
+                        <button class="btn btn-primary mt-2" type="submit">Upload</button>
+                    </div>
+                </form>
             </div>
         </div>
 

@@ -39,8 +39,12 @@ Route::middleware(['auth', 'usertypecheck:admin'])->group(function () {
     Route::post('/dashboardadmin/lecturersetting', [LecturerDashboardController::class,'update']);
     Route::get('/dashboardadmin/lecturerexport', [LecturerDashboardController::class,'lecturerexport']);
     Route::post('/dashboardadmin/lecturerimport', [LecturerDashboardController::class,'lecturerimport']);
+    Route::get('/dashboardadmin/scheduleexport', [LecturerDashboardController::class,'scheduleexport']);
+    Route::post('/dashboardadmin/scheduleimport', [LecturerDashboardController::class,'scheduleimport']);
     Route::get('/dashboardadmin/studentsetting', [StudentDashboardController::class,'create']);
     Route::post('/dashboardadmin/studentsetting', [StudentDashboardController::class,'update']);
+    Route::get('/dashboardadmin/studentexport', [StudentDashboardController::class,'studentexport']);
+    Route::post('/dashboardadmin/studentimport', [StudentDashboardController::class,'studentimport']);
 });
 Route::get('/dashboardadmin/uts', function () {
     return view('dashboard.admin.uts',

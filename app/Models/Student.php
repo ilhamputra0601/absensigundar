@@ -9,8 +9,10 @@ class Student extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['classroom_name','npm', 'name'];
+
     public function classroom(){
-        return $this->belongsTo(Classroom::class);
+        return $this->belongsTo(Classroom::class,'classroom_name','name');
     }
     public function absents(){
         return $this->hasMany(Absent::class);

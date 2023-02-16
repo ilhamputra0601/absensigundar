@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\LecturerExport;
-use App\Imports\LecturerImport;
+use App\Models\Absent;
+use App\Models\Lecturer;
+use App\Models\Schedule;
 use App\Models\Dashboard;
 use Illuminate\Http\Request;
+use App\Exports\LecturerExport;
+use App\Exports\ScheduleExport;
+use App\Imports\LecturerImport;
+use App\Imports\ScheduleImport;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LecturerDashboardController extends Controller
 {
@@ -35,11 +40,41 @@ class LecturerDashboardController extends Controller
     }
 
     public function lecturerimport(Request $request){
+        Lecturer::truncate();
         $file = $request->file('file');
         $filename = $file->getClientOriginalName();
         $file->move('LecturerData',$filename);
 
         Excel::import(new LecturerImport,public_path('/LecturerData/'.$filename));
         return back()->with('success','Data Dosen Telah Di Upload');
+    }
+
+    public function scheduleexport(){
+        return Excel::download(new ScheduleExport,'jadwal.xlsx');
+    }
+
+    public function scheduleimport(Request $request){
+        Schedule::truncate();
+        $file = $request->file('file');
+        $filename = $file->getClientOriginalName();
+        $file->move('ScheduleData',$filename);
+
+        Excel::import(new ScheduleImport,public_path('/ScheduleData/'.$filename));
+        Absent::truncate();
+        $schedules = Schedule::get()->all();
+        foreach ($schedules as $schedule) {
+            $students = $schedule->classroom->students;
+            foreach ($students as $student) {
+                for($i=1;$i<=14; $i++){
+                    Absent::create([
+                        'schedule_id' => $schedule->id,
+                        'student_id' => $student->id,
+                        'absenttype_id' => null,
+                        'week' => $i
+                    ]);
+                }
+            }
+        }
+        return back()->with('success','Data Jadwal Telah Di Upload');
     }
 }

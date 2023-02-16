@@ -46,19 +46,19 @@ class DatabaseSeeder extends Seeder
 
         //dummy excel
         Student::create([
-            'classroom_id' => 1,
+            'classroom_name' => '1ia01',
             'npm' => '56418102',
             'name' => 'Ricky Student'
         ]);
 
         Student::create([
-            'classroom_id' => 1,
+            'classroom_name' => '1ia01',
             'npm' => '56418103',
             'name' => 'Ricky Student2'
         ]);
 
         Student::create([
-            'classroom_id' => 3,
+            'classroom_name' => '1ia01',
             'npm' => '56418104',
             'name' => 'Ricky Student3'
         ]);
@@ -192,14 +192,6 @@ class DatabaseSeeder extends Seeder
             'lecturer_nidn' => '1234567890'
         ]);
 
-        Schedule::create([
-            'classroom_name' => '1ia03',
-            'course_name' => 'Ilmu Budaya Dasar',
-            'location_name' => 'Kampus D',
-            'time_description' => 'Senin 09.00 - 10.00',
-            'lecturer_nidn' => '1234567890'
-        ]);
-
         Absenttype::create([
             'name' => 'Hadir'
         ]);
@@ -233,7 +225,7 @@ class DatabaseSeeder extends Seeder
 
         for($i=1;$i<=14; $i++){
             Absent::create([
-                'schedule_id' => 2,
+                'schedule_id' => 1,
                 'student_id' => 3,
                 'absenttype_id' => null,
                 'week' => $i

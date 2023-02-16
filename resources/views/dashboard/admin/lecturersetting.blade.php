@@ -42,11 +42,14 @@
                         <button class="btn btn-primary mt-2" type="submit">Upload</button>
                     </div>
                 </form>
-                <div class="mb-3">
-                    <label class="form-label" for="customFile">Masukkan Jadwal Dosen</label>
-                    <input type="file" class="form-control" id="customFile" />
-                    <button class="btn btn-primary mt-2" type="submit">Upload</button>
-                </div>
+                <form action="/dashboardadmin/scheduleimport" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <label class="form-label" for="customFile">Masukkan Jadwal Dosen</label>
+                        <input type="file" class="form-control" id="customFile" name="file" />
+                        <button class="btn btn-primary mt-2" type="submit">Upload</button>
+                    </div>
+                </form>
             </div>
         </div>
         <section>
