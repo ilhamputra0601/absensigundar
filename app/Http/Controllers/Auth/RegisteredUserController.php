@@ -34,8 +34,8 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'usertype_id' => ['required', 'integer', 'max:20'],
-            'nidn' => ['nullable'],
-            'npm' => ['nullable'],
+            'nidn' => ['nullable', 'unique:'.User::class],
+            'npm' => ['nullable','unique:'.User::class],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
@@ -44,10 +44,10 @@ class RegisteredUserController extends Controller
             $newuser = Lecturer::firstWhere('nidn',$request->nidn);
         } else if($request->usertype_id == 3){
             $newuser = Student::firstWhere('npm',$request->npm);
-        };
+        }
 
         if(!$newuser){
-            return back()->with('error','NPM Tidak Terdaftar!');
+            return back()->with('error','Data Anda Tidak Terdaftar');
         }{
             $user = User::create([
                 'name' => $newuser->name,
