@@ -104,7 +104,6 @@
                 </div>
             </div>
 
-            {{-- inputan absensi belom --}}
             <h5 class="card-title ">Table Presensi</h5>
             @csrf
             <input type="hidden" name="week" value="">

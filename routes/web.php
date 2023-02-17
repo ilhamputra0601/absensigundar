@@ -7,7 +7,9 @@ use App\Http\Controllers\Admin\LecturerDashboardController;
 use App\Http\Controllers\Admin\StudentDashboardController;
 use App\Http\Controllers\Lecturer\LecturerAttendanceController;
 use App\Http\Controllers\Lecturer\UtsListController;
+use App\Http\Controllers\Lecturer\UasListController;
 use App\Http\Controllers\Student\ExamCardController;
+use App\Http\Controllers\Student\StudentAttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +73,8 @@ Route::get('/dashboardlecturer/attendancedetail', [LecturerAttendanceController:
 Route::post('/dashboardlecturer/attendancedetail', [LecturerAttendanceController::class,'change'])->middleware(['auth', 'usertypecheck:lecturer']);
 Route::get('/dashboardlecturer/utslist', [UtsListController::class,'create'])->middleware(['auth', 'usertypecheck:lecturer']);
 Route::get('/dashboardlecturer/utslistdetail', [UtsListController::class,'search'])->middleware(['auth', 'usertypecheck:lecturer']);
+Route::get('/dashboardlecturer/uaslist', [UasListController::class,'create'])->middleware(['auth', 'usertypecheck:lecturer']);
+Route::get('/dashboardlecturer/uaslistdetail', [UasListController::class,'search'])->middleware(['auth', 'usertypecheck:lecturer']);
 Route::get('/dashboardlecturer/profile', function () {
     return view('dashboard.lecturer.profile',
         [
@@ -85,11 +89,8 @@ Route::get('/dashboardstudent', function () {
         'dashboardstudent' => Dashboard::where('usertype_id',3)->first()
         ]);
 })->middleware(['auth', 'usertypecheck:student']);
-Route::get('/dashboardstudent/attendance', function () {
-    return view('dashboard.student.attendance',[
-        'page' => 'Dashboard Mahasiswa'
-        ]);
-})->middleware(['auth', 'usertypecheck:student']);
+Route::get('/dashboardstudent/attendance', [StudentAttendanceController::class,'index'])->middleware(['auth', 'usertypecheck:student']);
+Route::get('/dashboardstudent/attendancedetail', [StudentAttendanceController::class,'search'])->middleware(['auth', 'usertypecheck:student']);
 Route::get('/dashboardstudent/examcard', [ExamCardController::class,'index'])->middleware(['auth', 'usertypecheck:student']);
 Route::get('/dashboardstudent/profile', function () {
     return view('dashboard.student.profile',

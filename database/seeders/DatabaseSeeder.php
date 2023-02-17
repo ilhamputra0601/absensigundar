@@ -98,7 +98,7 @@ class DatabaseSeeder extends Seeder
             }
 
             Classroom::insert([
-                'name' => '1ia' . str_pad($i, 2, '0', STR_PAD_LEFT),
+                'name' => '1IA' . str_pad($i, 2, '0', STR_PAD_LEFT),
                 'region' => $region,
                 'major_id' => 1
             ]);
@@ -116,7 +116,7 @@ class DatabaseSeeder extends Seeder
             }
 
             Classroom::insert([
-                'name' => '2ia' . str_pad($i, 2, '0', STR_PAD_LEFT),
+                'name' => '2IA' . str_pad($i, 2, '0', STR_PAD_LEFT),
                 'region' => $region,
                 'major_id' => 1
             ]);
@@ -134,7 +134,7 @@ class DatabaseSeeder extends Seeder
             }
 
             Classroom::insert([
-                'name' => '3ia' . str_pad($i, 2, '0', STR_PAD_LEFT),
+                'name' => '3IA' . str_pad($i, 2, '0', STR_PAD_LEFT),
                 'region' => $region,
                 'major_id' => 1
             ]);
@@ -150,7 +150,7 @@ class DatabaseSeeder extends Seeder
                 $region = 'Cengkareng';
             }
             Classroom::insert([
-                'name' => '2ia' . str_pad($i, 2, '0', STR_PAD_LEFT),
+                'name' => '4IA' . str_pad($i, 2, '0', STR_PAD_LEFT),
                 'region' => $region,
                 'major_id' => 1
             ]);
@@ -161,7 +161,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Major::create([
-            'name' => 'Teknik Informatika',
+            'name' => 'Informatika',
             'faculty_id' => 1
         ]);
 
@@ -185,7 +185,7 @@ class DatabaseSeeder extends Seeder
 
         //dummy excel
         Schedule::create([
-            'classroom_name' => '1ia01',
+            'classroom_name' => '1IA01',
             'course_name' => 'Ilmu Budaya Dasar',
             'location_name' => 'Kampus D',
             'time_description' => 'Senin 08.00 - 09.00',

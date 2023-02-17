@@ -8,16 +8,16 @@
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dashboardlecturer">{{ $page }}</a></li>
-                    <li class="breadcrumb-item active">List UTS</li>
+                    <li class="breadcrumb-item active">List UAS</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
         <section class="section">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Cari File UTS</h5>
+                    <h5 class="card-title">Cari File UAS</h5>
                     {{-- search --}}
-                    <form action="/dashboardlecturer/utslistdetail" class="row g-3">
+                    <form action="/dashboardlecturer/uaslistdetail" class="row g-3">
                         <div class="col-lg-5 col-md-12 mb-3">
                             <div class="form-outline">
                                 <select name="schedule_id" class="form-select" aria-label="Default select example" required>
@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                             <hr class="mx-3 text-primary" style="margin-top: -10px">
-                            <h3><strong>KARTU LIST UTS <p>(Untuk Dosen)</p></strong> </h3>
+                            <h3><strong>KARTU LIST UAS <p>(Untuk Dosen)</p></strong> </h3>
                         </div>
                         <h6 class="text-center ">Daftar Mahasiswa Peserta UTS</h6>
                         <div id="huhuy" class="card-body border  rounded-3 m-3 text-dark">

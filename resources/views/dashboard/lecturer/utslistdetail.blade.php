@@ -32,8 +32,8 @@
                         </div>
                         <h6 class="text-center ">Daftar Mahasiswa Peserta UTS</h6>
                         <div id="huhuy" class="card-body border  rounded-3 m-3 text-dark">
-                            <p class="pt-3">Kelas :</p>
-                            <p>Mata Kuliah:</p>
+                            <p class="pt-3">Kelas : {{ $absents->first()->schedule->classroom_name }}</p>
+                            <p>Mata Kuliah: {{ $absents->first()->schedule->course_name }}</p>
                             <hr class="text-primary">
                             <h6 class="card-subtitle mb-2 text-muted">Dapat mengikuti:</h6>
                             <table class="table table-striped">

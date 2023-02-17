@@ -50,22 +50,26 @@
                 <div class="row mb-4">
                     <div class="col">
                         <label class="form-label" for="form6Example1">Jurusan :
-                            {{ $absents->first()->student->classroom->major->name }}</label>
+                            {{ $absents->first()->student->classroom->major->name }}
+                        </label>
                     </div>
                     <div class="col">
                         <label class="form-label" for="form6Example1">Tahun Ajaran :
-                            {{ $absents->first()->schedule->course->academicyear }}</label>
+                            {{ $absents->first()->schedule->course->academicyear }}
+                        </label>
                     </div>
                     <div class="col">
                         <label class="form-label" for="form6Example1">Jam Perkuliahan :
-                            {{ $absents->first()->schedule->time_description }}</label>
+                            {{ $absents->first()->schedule->time_description }}
+                        </label>
                     </div>
 
                 </div>
                 <div class="row mb-4 ">
                     <div class="col">
                         <label class="form-label" for="form6Example1">Region :
-                            {{ $absents->first()->student->classroom->region }}</label>
+                            {{ $absents->first()->student->classroom->region }}
+                        </label>
                     </div>
                 </div>
             </div>

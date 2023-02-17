@@ -100,6 +100,13 @@
                       <span>List UTS</span>
                   </a>
               </li>
+              <li class="nav-item">
+                  <a class="nav-link {{ Request::is('dashboardlecturer/uaslist') ? '' : 'collapsed' }}"
+                      href="/dashboardlecturer/uaslist">
+                      <i class="bi bi-journal-text"></i>
+                      <span>List UAS</span>
+                  </a>
+              </li>
           @endif
 
           {{-- Sidebar For Student --}}
