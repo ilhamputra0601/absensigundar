@@ -16,6 +16,7 @@ use App\Models\Usertype;
 use App\Models\Classroom;
 use App\Models\Absenttype;
 use App\Models\Dashboard;
+use App\Models\Threshold;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -46,19 +47,19 @@ class DatabaseSeeder extends Seeder
 
         //dummy excel
         Student::create([
-            'classroom_name' => '1ia01',
+            'classroom_name' => '1IA01',
             'npm' => '56418102',
             'name' => 'Ricky Student'
         ]);
 
         Student::create([
-            'classroom_name' => '1ia01',
+            'classroom_name' => '1IA01',
             'npm' => '56418103',
             'name' => 'Ricky Student2'
         ]);
 
         Student::create([
-            'classroom_name' => '1ia01',
+            'classroom_name' => '1IA01',
             'npm' => '56418104',
             'name' => 'Ricky Student3'
         ]);
@@ -239,6 +240,16 @@ class DatabaseSeeder extends Seeder
         Dashboard::create([
             'usertype_id' => 3,
             'body' => 'Ini Dashboard Mahasiswa'
+        ]);
+
+        Threshold::create([
+            'name' => 'UTS',
+            'value' => '7'
+        ]);
+
+        Threshold::create([
+            'name' => 'UAS',
+            'value' => '10'
         ]);
     }
 }

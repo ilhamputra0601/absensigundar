@@ -7,6 +7,7 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Schedule;
+use App\Models\Threshold;
 
 class ExamCardController extends Controller
 {
@@ -16,7 +17,7 @@ class ExamCardController extends Controller
                                 ->where('absenttype_id', 1)
                                 ->whereIn('week', range(1, 10))
                                 ->groupBy('schedule_id')
-                                ->havingRaw('COUNT(id) >= 7')
+                                ->havingRaw("COUNT(id) >= 7")
                                 ->pluck('schedule_id');
         $schedules = Schedule::whereIn('id',$schedules_id)->get();
         $fail_id = Absent::where('student_id',$student->id)

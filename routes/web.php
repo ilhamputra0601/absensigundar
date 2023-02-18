@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminUtsController;
+use App\Http\Controllers\Admin\AdminUasController;
 use App\Models\Dashboard;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
@@ -39,27 +41,23 @@ Route::middleware(['auth', 'usertypecheck:admin'])->group(function () {
     });
     Route::get('/dashboardadmin/lecturersetting', [LecturerDashboardController::class,'create']);
     Route::post('/dashboardadmin/lecturersetting', [LecturerDashboardController::class,'update']);
+    // TEMPLATE DOWNLOAD PERTAMA
     Route::get('/dashboardadmin/lecturerexport', [LecturerDashboardController::class,'lecturerexport']);
     Route::post('/dashboardadmin/lecturerimport', [LecturerDashboardController::class,'lecturerimport']);
+    //TEMPLATE
     Route::get('/dashboardadmin/scheduleexport', [LecturerDashboardController::class,'scheduleexport']);
     Route::post('/dashboardadmin/scheduleimport', [LecturerDashboardController::class,'scheduleimport']);
     Route::get('/dashboardadmin/studentsetting', [StudentDashboardController::class,'create']);
     Route::post('/dashboardadmin/studentsetting', [StudentDashboardController::class,'update']);
     Route::get('/dashboardadmin/studentexport', [StudentDashboardController::class,'studentexport']);
     Route::post('/dashboardadmin/studentimport', [StudentDashboardController::class,'studentimport']);
+    Route::get('/dashboardadmin/uts', [AdminUtsController::class,'create']);
+    Route::post('/dashboardadmin/uts', [AdminUtsController::class,'insert']);
+    Route::get('/dashboardadmin/uas', [AdminUasController::class,'create']);
+    Route::post('/dashboardadmin/uas', [AdminUasController::class,'insert']);
 });
-Route::get('/dashboardadmin/uts', function () {
-    return view('dashboard.admin.uts',
-        [
-        'page' => 'Dashboard Admin'
-        ]);
-})->middleware(['auth', 'usertypecheck:admin']);
-Route::get('/dashboardadmin/uas', function () {
-    return view('dashboard.admin.uas',
-        [
-        'page' => 'Dashboard Admin'
-        ]);
-})->middleware(['auth', 'usertypecheck:admin']);
+
+
 
 //dosen
 Route::get('/dashboardlecturer', function () {

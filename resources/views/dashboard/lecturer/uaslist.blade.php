@@ -47,7 +47,7 @@
                             <hr class="mx-3 text-primary" style="margin-top: -10px">
                             <h3><strong>KARTU LIST UAS <p>(Untuk Dosen)</p></strong> </h3>
                         </div>
-                        <h6 class="text-center ">Daftar Mahasiswa Peserta UTS</h6>
+                        <h6 class="text-center ">Daftar Mahasiswa Peserta UAS</h6>
                         <div id="huhuy" class="card-body border  rounded-3 m-3 text-dark">
                             <p class="pt-3">Kelas :</p>
                             <p>Mata Kuliah:</p>

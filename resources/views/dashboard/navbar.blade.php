@@ -59,7 +59,8 @@
               <li class="nav-item">
                   <a class="nav-link {{ Request::is('dashboardadmin/uts', 'dashboardadmin/uas') ? '' : 'collapsed' }}"
                       data-bs-target="#charts-nav" data-bs-toggle="collapse">
-                      <i class="bi bi-bar-chart"></i><span>Data Absensi</span><i class="bi bi-chevron-down ms-auto"></i>
+                      <i class="bi bi-bar-chart"></i><span>Kehadiran Minimum</span><i
+                          class="bi bi-chevron-down ms-auto"></i>
                   </a>
                   <ul id="charts-nav"
                       class="nav-content {{ Request::is('dashboardadmin/uts', 'dashboardadmin/uas') ? '' : 'collapse' }}">
