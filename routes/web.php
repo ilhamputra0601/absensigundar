@@ -57,8 +57,6 @@ Route::middleware(['auth', 'usertypecheck:admin'])->group(function () {
     Route::post('/dashboardadmin/uas', [AdminUasController::class,'insert']);
 });
 
-
-
 //dosen
 Route::get('/dashboardlecturer', function () {
     return view('dashboard.lecturer.dashboard',[
@@ -73,6 +71,7 @@ Route::get('/dashboardlecturer/utslist', [UtsListController::class,'create'])->m
 Route::get('/dashboardlecturer/utslistdetail', [UtsListController::class,'search'])->middleware(['auth', 'usertypecheck:lecturer']);
 Route::get('/dashboardlecturer/uaslist', [UasListController::class,'create'])->middleware(['auth', 'usertypecheck:lecturer']);
 Route::get('/dashboardlecturer/uaslistdetail', [UasListController::class,'search'])->middleware(['auth', 'usertypecheck:lecturer']);
+Route::get('/dashboardlecturer/exportuaspdf', [UasListController::class,'exportpdf'])->middleware(['auth', 'usertypecheck:lecturer']);
 Route::get('/dashboardlecturer/profile', function () {
     return view('dashboard.lecturer.profile',
         [
