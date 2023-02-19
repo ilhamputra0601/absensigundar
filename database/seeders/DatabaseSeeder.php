@@ -206,6 +206,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Sakit'
         ]);
 
+        //Auto after Schedule Upload
         for($i=1;$i<=14; $i++){
             Absent::create([
                 'schedule_id' => 1,
@@ -214,7 +215,6 @@ class DatabaseSeeder extends Seeder
                 'week' => $i
             ]);
         }
-
         for($i=1;$i<=14; $i++){
             Absent::create([
                 'schedule_id' => 1,
@@ -223,7 +223,6 @@ class DatabaseSeeder extends Seeder
                 'week' => $i
             ]);
         }
-
         for($i=1;$i<=14; $i++){
             Absent::create([
                 'schedule_id' => 1,

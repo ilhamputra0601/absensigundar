@@ -93,7 +93,7 @@
                         </div>
                     </div>
 
-                    <button class="btn rounded-bottom btn-primary mx-3" onclick="downloadImage()">Download</button>
+                    <button class="btn rounded-bottom btn-primary mx-3" onclick="printz()">Download</button>
                 </div>
             </div>
             </div>
@@ -109,19 +109,12 @@
 
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script>
-        function downloadImage() {
-            const card = document.querySelector('#busetdah_keren_banget_ham');
-            html2canvas(card)
-                .then(canvas => {
-                    const filename = 'kartu_list_uts.png';
-                    const downloadLink = document.createElement('a');
-                    downloadLink.setAttribute('href', canvas.toDataURL('image/png'));
-                    downloadLink.setAttribute('download', filename);
-                    downloadLink.style.display = 'none';
-                    document.body.appendChild(downloadLink);
-                    downloadLink.click();
-                    document.body.removeChild(downloadLink);
-                });
+        function printz() {
+            var printContents = document.getElementById("busetdah_keren_banget_ham").innerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
         }
     </script>
 @endsection
