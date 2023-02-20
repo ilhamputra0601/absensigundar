@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('thresholds', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->char('value',2);
+            $table->char('value', 3);
             $table->timestamps();
         });
     }

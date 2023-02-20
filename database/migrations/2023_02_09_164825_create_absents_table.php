@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('student_id');
             $table->foreignId('absenttype_id')->nullable();
             $table->char('week', 2);
-            $table->timestamps();
         });
     }
 

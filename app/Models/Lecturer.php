@@ -9,5 +9,7 @@ class Lecturer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nidn','name'];
+    public $timestamps = false;
+
+    protected $fillable = ['nidn', 'name'];
 }

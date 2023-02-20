@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Lecturer;
 
-use App\Exports\AttendanceExport;
 use App\Models\Absent;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
+use App\Exports\AttendanceExport;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
@@ -120,5 +120,8 @@ class LecturerAttendanceController extends Controller
                 LEAST(SUM(CASE WHEN absenttype_id = 4 THEN 1 ELSE 0 END), 3)) / 14 * 100 AS `percentage`"))
             ->groupBy('students.npm', 'students.name')
             ->get();
+
+        $attendanceexport = new AttendanceExport($data);
+        return Excel::download($attendanceexport, 'attendance.xlsx');
     }
 }

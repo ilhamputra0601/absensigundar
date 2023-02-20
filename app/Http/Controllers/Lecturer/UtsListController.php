@@ -33,9 +33,9 @@ class UtsListController extends Controller
             ->whereIn('week', range(1, 10))
             ->groupBy('student_id')
             ->havingRaw("
-                            SUM(CASE WHEN absenttype_id = 1 THEN 1 ELSE 0 END) +
+                            (SUM(CASE WHEN absenttype_id = 1 THEN 1 ELSE 0 END) +
                             LEAST(SUM(CASE WHEN absenttype_id = 3 THEN 1 ELSE 0 END), 2) +
-                            LEAST(SUM(CASE WHEN absenttype_id = 4 THEN 1 ELSE 0 END), 3) >= $threshold->value")
+                            LEAST(SUM(CASE WHEN absenttype_id = 4 THEN 1 ELSE 0 END), 3)) / 10 * 100 >= $threshold->value")
             ->pluck('student_id');
         $students = Student::whereIn('id', $students_id)->get();
         $fail_id = Absent::where('schedule_id', $schedule_id)
@@ -43,9 +43,9 @@ class UtsListController extends Controller
             ->whereIn('week', range(1, 10))
             ->groupBy('student_id')
             ->havingRaw("
-                            SUM(CASE WHEN absenttype_id = 1 THEN 1 ELSE 0 END) +
+                            (SUM(CASE WHEN absenttype_id = 1 THEN 1 ELSE 0 END) +
                             LEAST(SUM(CASE WHEN absenttype_id = 3 THEN 1 ELSE 0 END), 2) +
-                            LEAST(SUM(CASE WHEN absenttype_id = 4 THEN 1 ELSE 0 END), 3) < $threshold->value")
+                            LEAST(SUM(CASE WHEN absenttype_id = 4 THEN 1 ELSE 0 END), 3)) / 10 * 100 < $threshold->value")
             ->pluck('student_id');
         $students_fail = Student::whereIn('id', $fail_id)->get();
         return view('dashboard.lecturer.utslistdetail', [

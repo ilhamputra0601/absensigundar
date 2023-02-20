@@ -57,24 +57,11 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link {{ Request::is('dashboardadmin/uts', 'dashboardadmin/uas') ? '' : 'collapsed' }}"
-                      data-bs-target="#charts-nav" data-bs-toggle="collapse">
-                      <i class="bi bi-bar-chart"></i><span>Kehadiran Minimum</span><i
-                          class="bi bi-chevron-down ms-auto"></i>
+                  <a class="nav-link {{ Request::is('dashboardadmin/minimumattendance') ? '' : 'collapsed' }}"
+                      href="/dashboardadmin/minimumattendance">
+                      <i class="bi bi-bar-chart"></i>
+                      <span>Kehadiran Minimum</span>
                   </a>
-                  <ul id="charts-nav"
-                      class="nav-content {{ Request::is('dashboardadmin/uts', 'dashboardadmin/uas') ? '' : 'collapse' }}">
-                      <li>
-                          <a class="{{ Request::is('dashboardadmin/uts') ? 'active' : '' }}" href="/dashboardadmin/uts">
-                              <i class="bi bi-circle"></i><span>UTS</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a class="{{ Request::is('dashboardadmin/uas') ? 'active' : '' }}" href="/dashboardadmin/uas">
-                              <i class="bi bi-circle"></i><span>UAS</span>
-                          </a>
-                      </li>
-                  </ul>
               </li>
           @endif
 

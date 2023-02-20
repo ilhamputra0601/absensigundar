@@ -9,6 +9,8 @@ class Schedule extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = ['classroom_name', 'course_name', 'location_name', 'time_description', 'lecturer_nidn', 'academic_year'];
 
     public function absents()

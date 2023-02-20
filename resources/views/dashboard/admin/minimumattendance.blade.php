@@ -8,8 +8,7 @@
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dashboardadmin">{{ $page }}</a></li>
-                    <li class="breadcrumb-item">Kehadiran Minimum</li>
-                    <li class="breadcrumb-item active">UTS</li>
+                    <li class="breadcrumb-item active">Kehadiran Minimum</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -22,10 +21,10 @@
         <!-- Sales Card -->
         <div class="card info-card ">
             <div class="card-body">
-                <form method="POST" action="/dashboardadmin/uts">
+                <form method="POST" action="/dashboardadmin/minimumattendance">
                     @csrf
-                    <h5 class="card-title">Kehadiran Minimum M1 - M10</h5>
-                    <input type="text" name='value' required>
+                    <h5 class="card-title">Kehadiran Minimum</h5>
+                    <input type="text" name='value' required>%
                     <button type="submit">Submit</button>
                 </form>
             </div>

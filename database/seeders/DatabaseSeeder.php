@@ -239,13 +239,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Threshold::create([
-            'name' => 'UTS',
-            'value' => '7'
-        ]);
-
-        Threshold::create([
-            'name' => 'UAS',
-            'value' => '10'
+            'name' => 'Minimum Percentage',
+            'value' => '70'
         ]);
     }
 }

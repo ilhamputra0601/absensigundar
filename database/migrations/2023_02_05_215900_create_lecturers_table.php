@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->char('nidn', 10)->unique();
             $table->string('name');
-            $table->timestamps();
         });
     }
 

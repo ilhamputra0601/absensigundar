@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('classroom_name');
             $table->char('npm', 8)->unique();
             $table->string('name');
-            $table->timestamps();
         });
     }
 

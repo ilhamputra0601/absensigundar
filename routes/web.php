@@ -1,12 +1,11 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminUtsController;
-use App\Http\Controllers\Admin\AdminUasController;
 use App\Models\Dashboard;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\LecturerDashboardController;
 use App\Http\Controllers\Admin\StudentDashboardController;
+use App\Http\Controllers\Admin\AdminMinimumAttendanceController;
 use App\Http\Controllers\Lecturer\LecturerAttendanceController;
 use App\Http\Controllers\Lecturer\UtsListController;
 use App\Http\Controllers\Lecturer\UasListController;
@@ -51,10 +50,8 @@ Route::middleware(['auth', 'usertypecheck:admin'])->group(function () {
     Route::post('/dashboardadmin/studentsetting', [StudentDashboardController::class, 'update']);
     Route::get('/dashboardadmin/studentexport', [StudentDashboardController::class, 'studentexport']);
     Route::post('/dashboardadmin/studentimport', [StudentDashboardController::class, 'studentimport']);
-    Route::get('/dashboardadmin/uts', [AdminUtsController::class, 'create']);
-    Route::post('/dashboardadmin/uts', [AdminUtsController::class, 'insert']);
-    Route::get('/dashboardadmin/uas', [AdminUasController::class, 'create']);
-    Route::post('/dashboardadmin/uas', [AdminUasController::class, 'insert']);
+    Route::get('/dashboardadmin/minimumattendance', [AdminMinimumAttendanceController::class, 'create']);
+    Route::post('/dashboardadmin/minimumattendance', [AdminMinimumAttendanceController::class, 'insert']);
 });
 
 //dosen
