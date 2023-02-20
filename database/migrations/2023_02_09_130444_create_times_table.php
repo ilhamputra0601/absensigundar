@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('times', function (Blueprint $table) {
             $table->id();
-            $table->string('timecode',4);
+            $table->string('timecode');
             $table->string('description');
             $table->timestamps();
         });

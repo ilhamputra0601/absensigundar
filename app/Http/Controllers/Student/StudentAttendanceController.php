@@ -10,31 +10,33 @@ use App\Http\Controllers\Controller;
 
 class StudentAttendanceController extends Controller
 {
-    public function index(){
-        $student = Student::where('npm',auth()->user()->npm)->first();
-        $schedules_id = Absent::where('student_id',$student->id)
-                                ->groupBy('schedule_id')
-                                ->pluck('schedule_id');
-        $schedules = Schedule::whereIn('id',$schedules_id)->get();
-        return view('dashboard.student.attendance',[
-            'page' => 'Dashboard Mahasiswa',
+    public function index()
+    {
+        $student = Student::where('npm', auth()->user()->npm)->first();
+        $schedules_id = Absent::where('student_id', $student->id)
+            ->groupBy('schedule_id')
+            ->pluck('schedule_id');
+        $schedules = Schedule::whereIn('id', $schedules_id)->get();
+        return view('dashboard.student.attendance', [
+            'page' => 'Laman Mahasiswa',
             'schedules' => $schedules
-            ]);
+        ]);
     }
 
-    public function search(Request $request){
-        $student = Student::where('npm',auth()->user()->npm)->first();
-        $schedules_id = Absent::where('student_id',$student->id)
-                                ->groupBy('schedule_id')
-                                ->pluck('schedule_id');
-        $schedules = Schedule::whereIn('id',$schedules_id)->get();
-        $absents = Absent::where('schedule_id',$request->schedule_id)
-                        ->where('student_id',$student->id)
-                        ->get();
-        return view('dashboard.student.attendancedetail',[
-            'page' => 'Dashboard Mahasiswa',
+    public function search(Request $request)
+    {
+        $student = Student::where('npm', auth()->user()->npm)->first();
+        $schedules_id = Absent::where('student_id', $student->id)
+            ->groupBy('schedule_id')
+            ->pluck('schedule_id');
+        $schedules = Schedule::whereIn('id', $schedules_id)->get();
+        $absents = Absent::where('schedule_id', $request->schedule_id)
+            ->where('student_id', $student->id)
+            ->get();
+        return view('dashboard.student.attendancedetail', [
+            'page' => 'Laman Mahasiswa',
             'schedules' => $schedules,
             'absents' => $absents
-            ]);
+        ]);
     }
 }

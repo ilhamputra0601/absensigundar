@@ -16,6 +16,22 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Cari File UAS</h5>
+                    {{-- search --}}
+                    <form action="/dashboardlecturer/uaslistdetail" class="row g-3">
+                        <div class="col-lg-5 col-md-12 mb-3">
+                            <div class="form-outline">
+                                <select name="schedule_id" class="form-select" aria-label="Default select example" required>
+                                    <option value="" style="display: none;">Pilih Kelas</option>
+                                    @foreach ($schedules as $schedule)
+                                        <option value="{{ $schedule->id }}">{{ $schedule->classroom_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-12 mb-3">
+                            <button type="submit" class="btn btn-primary btn-block">Cari</button>
+                        </div>
+                    </form>
                     <div id="anjir_keren_banget_ham" class="card border border-primary rounded-3 shadow-lg "
                         style=" max-width: 500px;">
                         <div class="card-header bg-light text-center">
@@ -73,6 +89,10 @@
                         </div>
                     </div>
                     <button class="btn rounded-bottom btn-primary mx-3" onclick="printz()">Download</button>
+                    <form action="/dashboardlecturer/printattendanceuas">
+                        <input type="hidden" name="schedule_id" value="{{ $absents->first()->schedule->id }}">
+                        <button class="btn rounded-bottom btn-primary mx-3 mt-3">Download Bukti Absensi</button>
+                    </form>
                 </div>
             </div>
         </section>

@@ -33,7 +33,7 @@ class ExamCardController extends Controller
                             ->pluck('schedule_id');
         $schedules_fail = Schedule::whereIn('id',$fail_id)->get();
         return view('dashboard.student.examcard',[
-            'page' => 'Dashboard Mahasiswa',
+            'page' => 'Laman Mahasiswa',
             'student' => $student,
             'schedules' => $schedules,
             'schedules_fail' => $schedules_fail

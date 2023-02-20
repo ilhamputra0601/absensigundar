@@ -11,7 +11,7 @@ class AdminUtsController extends Controller
     public function create(){
         return view('dashboard.admin.uts',
             [
-            'page' => 'Dashboard Admin'
+            'page' => 'Laman Admin'
             ]);
     }
 

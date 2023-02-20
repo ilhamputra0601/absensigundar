@@ -12,10 +12,29 @@
                 </ol>
             </nav>
         </div>
-
         <section class="section">
             <div class="card">
                 <div class="card-body">
+                    <h5 class="card-title">Cari Matakuliah</h5>
+                    <form action="/dashboardstudent/attendancedetail">
+                        <div class="row mb-4">
+                            <div class="col">
+                                <label for="classroom_name" class="form-label">Pilih Matkul</label>
+                                <select id="classroom_name" class="form-select" name="schedule_id"
+                                    onclick="changeMargin1()">
+                                    <option value="" style="display: none;">--Pilih Matkul--</option>
+                                    @foreach ($schedules as $schedule)
+                                        <option value="{{ $schedule->id }}">{{ $schedule->course_name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col">
+                                <br>
+                                <button class="btn btn-primary" type="submit" style="margin-top:8px;">Cari</button>
+                            </div>
+                        </div>
+                    </form>
                     <section id="hamz" class="section" style="margin-bottom:100px;">
                         <div>
                             <div class="row mb-4">

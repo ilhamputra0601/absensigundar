@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('location_name');
             $table->string('time_description');
             $table->char('lecturer_nidn',10);
+            $table->string('academic_year');
             $table->timestamps();
         });
     }
