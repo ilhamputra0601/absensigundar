@@ -60,7 +60,27 @@ class LecturerAttendanceController extends Controller
     public function print(Request $request)
     {
         $schedule = Schedule::where('id', $request->input('schedule_id'))->first();
-        $table = Absent::where('schedule_id', $schedule->id)
+        $table1 = Absent::where('schedule_id', $schedule->id)
+            ->leftjoin('absenttypes', 'absents.absenttype_id', '=', 'absenttypes.id')
+            ->join('students', 'absents.student_id', '=', 'students.id')
+            ->select('students.npm', 'students.name')
+            ->addSelect(DB::raw("MAX(CASE WHEN absents.week = 1 THEN IFNULL(absenttypes.name, '') ELSE NULL END) AS 'week1'"))
+            ->addSelect(DB::raw("MAX(CASE WHEN absents.week = 2 THEN IFNULL(absenttypes.name, '') ELSE NULL END) AS 'week2'"))
+            ->addSelect(DB::raw("MAX(CASE WHEN absents.week = 3 THEN IFNULL(absenttypes.name, '') ELSE NULL END) AS 'week3'"))
+            ->addSelect(DB::raw("MAX(CASE WHEN absents.week = 4 THEN IFNULL(absenttypes.name, '') ELSE NULL END) AS 'week4'"))
+            ->addSelect(DB::raw("MAX(CASE WHEN absents.week = 5 THEN IFNULL(absenttypes.name, '') ELSE NULL END) AS 'week5'"))
+            ->addSelect(DB::raw("MAX(CASE WHEN absents.week = 6 THEN IFNULL(absenttypes.name, '') ELSE NULL END) AS 'week6'"))
+            ->addSelect(DB::raw("MAX(CASE WHEN absents.week = 7 THEN IFNULL(absenttypes.name, '') ELSE NULL END) AS 'week7'"))
+            ->addSelect(DB::raw("MAX(CASE WHEN absents.week = 8 THEN IFNULL(absenttypes.name, '') ELSE NULL END) AS 'week8'"))
+            ->addSelect(DB::raw("MAX(CASE WHEN absents.week = 9 THEN IFNULL(absenttypes.name, '') ELSE NULL END) AS 'week9'"))
+            ->addSelect(DB::raw("MAX(CASE WHEN absents.week = 10 THEN IFNULL(absenttypes.name, '') ELSE NULL END) AS 'week10'"))
+            ->addSelect(DB::raw("
+                (SUM(CASE WHEN absents.absenttype_id = 1 THEN 1 ELSE 0 END)
+                + LEAST(SUM(CASE WHEN absenttype_id = 3 THEN 1 ELSE 0 END), 2) +
+                LEAST(SUM(CASE WHEN absenttype_id = 4 THEN 1 ELSE 0 END), 3)) / 10 * 100 AS `percentage`"))
+            ->groupBy('students.npm', 'students.name')
+            ->get();
+        $table2 = Absent::where('schedule_id', $schedule->id)
             ->leftjoin('absenttypes', 'absents.absenttype_id', '=', 'absenttypes.id')
             ->join('students', 'absents.student_id', '=', 'students.id')
             ->select('students.npm', 'students.name')
@@ -89,7 +109,8 @@ class LecturerAttendanceController extends Controller
         return view('dashboard.lecturer.exportattendance', [
             'page' => "Laman Dosen",
             'schedule' => $schedule,
-            'table' => $table
+            'table1' => $table1,
+            'table2' => $table2
         ]);
     }
 

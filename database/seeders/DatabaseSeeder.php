@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
             'type' => 'student'
         ]);
 
-        //dummy excel
+        //dummy excel lecturer
         Lecturer::create([
             'nidn' => '1234567890',
             'name' => 'User Dosen1'
@@ -49,32 +49,30 @@ class DatabaseSeeder extends Seeder
             'name' => 'User Dosen2'
         ]);
 
-        //dummy excel
+        //dummy excel student
         Student::create([
             'classroom_name' => '1IA01',
             'npm' => '56418001',
             'name' => 'User Mahasiswa1'
         ]);
-
         Student::create([
             'classroom_name' => '1IA01',
             'npm' => '56418002',
             'name' => 'User Mahasiswa2'
         ]);
-
         Student::create([
             'classroom_name' => '1IA01',
             'npm' => '56418003',
             'name' => 'User Mahasiswa3'
         ]);
 
+        //dummy excel user
         User::create([
             'usertype_id' => 1,
             'name' => 'User Admin',
             'email' => 'user.admin@gmail.com',
             'password' => Hash::make('12345678')
         ]);
-
         User::create([
             'usertype_id' => 2,
             'name' => 'User Dosen1',
@@ -82,7 +80,6 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'nidn' => '1234567890'
         ]);
-
         User::create([
             'usertype_id' => 3,
             'name' => 'User Mahasiswa1',
@@ -91,6 +88,16 @@ class DatabaseSeeder extends Seeder
             'npm' => '56418001'
         ]);
 
+        Faculty::create([
+            'name' => 'Teknik Industri'
+        ]);
+
+        Major::create([
+            'name' => 'Teknik Informatika',
+            'faculty_id' => 1
+        ]);
+
+        //classrooms
         for ($i = 1; $i <= 28; $i++) {
             $region = null;
             if ($i <= 20) {
@@ -136,7 +143,6 @@ class DatabaseSeeder extends Seeder
                 'major_id' => 1
             ]);
         }
-
         for ($i = 1; $i <= 23; $i++) {
             $region = null;
             if ($i <= 16) {
@@ -153,41 +159,108 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        Faculty::create([
-            'name' => 'Teknik Industri'
-        ]);
-
-        Major::create([
-            'name' => 'Teknik Informatika',
-            'faculty_id' => 1
-        ]);
-
+        //courses
         Course::create([
             'major_id' => 1,
             'coursecode' => 'HM045101',
             'name' => 'Ilmu Budaya Dasar',
             'courseyear' => '2012',
-            'SKS' => '1',
+            'SKS' => 1,
+            'semester' => 1
+        ]);
+        Course::create([
+            'major_id' => 1,
+            'coursecode' => 'PP000207',
+            'name' => 'Pendidikan Kewarganegaraan',
+            'courseyear' => '2012',
+            'SKS' => 2,
+            'semester' => 1
+        ]);
+        Course::create([
+            'major_id' => 1,
+            'coursecode' => 'IT045204',
+            'name' => 'Bahasa Inggris',
+            'courseyear' => '2012',
+            'SKS' => 2,
+            'semester' => 1
+        ]);
+        Course::create([
+            'major_id' => 1,
+            'coursecode' => 'IT045208',
+            'name' => 'Fisika dan Kimia Dasar 1',
+            'courseyear' => '2012',
+            'SKS' => 2,
+            'semester' => 1
+        ]);
+        Course::create([
+            'major_id' => 1,
+            'coursecode' => 'IT045210',
+            'name' => 'Matematika Dasar 1',
+            'courseyear' => '2012',
+            'SKS' => 2,
+            'semester' => 1
+        ]);
+        Course::create([
+            'major_id' => 1,
+            'coursecode' => 'IT045213',
+            'name' => 'Matematika Informatika 1',
+            'courseyear' => '2012',
+            'SKS' => 2,
+            'semester' => 1
+        ]);
+        Course::create([
+            'major_id' => 1,
+            'coursecode' => 'IT045301',
+            'name' => 'Algoritma dan Pemrograman 1',
+            'courseyear' => '2012',
+            'SKS' => 3,
+            'semester' => 1
+        ]);
+        Course::create([
+            'major_id' => 1,
+            'coursecode' => 'IT045121',
+            'name' => 'Praktikum Algoritma dan 
+            Pemrograman 1',
+            'courseyear' => '2012',
+            'SKS' => 1,
+            'semester' => 1
+        ]);
+        Course::create([
+            'major_id' => 1,
+            'coursecode' => 'IT045220',
+            'name' => 'Pengantar Teknologi Komputer dan 
+            Informatika',
+            'courseyear' => '2012',
+            'SKS' => 2,
+            'semester' => 1
+        ]);
+        Course::create([
+            'major_id' => 1,
+            'coursecode' => 'IT045124',
+            'name' => 'Praktikum Fisika Dasar',
+            'courseyear' => '2012',
+            'SKS' => 1,
             'semester' => 1
         ]);
 
+        //useless
         Location::create([
             'name' => 'E112'
         ]);
-
         Time::create([
             'timecode' => '1/2',
             'description' => '08.00 - 09.00'
         ]);
 
-        //dummy excel
+        //dummy excel schedule
         Schedule::create([
             'classroom_name' => '1IA01',
             'course_name' => 'Ilmu Budaya Dasar',
             'location_name' => 'E112',
             'time_description' => '1/2',
             'lecturer_nidn' => '1234567890',
-            'academic_year' => 'PTA/ATA 2022/2023'
+            'academic_year' => 'PTA/ATA 2022/2023',
+            'total_students' => 43
         ]);
 
         Absenttype::create([
@@ -203,7 +276,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Sakit'
         ]);
 
-        //Auto after Schedule Upload
+        //Absents, Auto after Schedule Uploaded
         for ($i = 1; $i <= 14; $i++) {
             Absent::create([
                 'schedule_id' => 1,

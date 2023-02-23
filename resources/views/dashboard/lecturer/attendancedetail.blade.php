@@ -26,13 +26,19 @@
                         <select id="classroom_name" class="form-select" name="schedule_id" required>
                             <option value="" style="display: none;">--Pilih Kelas--</option>
                             @foreach ($schedules as $schedule)
-                                <option value="{{ $schedule->id }}">{{ $schedule->classroom_name }}</option>
+                                <option value="{{ $schedule->id }}"
+                                    {{ $schedule->id == old('schedule_id', Request::input('schedule_id')) ? 'selected' : '' }}>
+                                    {{ $schedule->classroom_name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="col">
+
                         <label for="week" class="form-label">Minggu ke-</label>
-                        <select id="week" name="week" class="form-select" required>
+                        <br>
+                        <input type="number" name="week" min="1" max="14" required
+                            value="{{ old('number_input', Request::input('week')) }}">
+                        {{-- <select id="week" name="week" class="form-select" required>
                             <option value="" style="display: none;">--Minggu ke--</option>
                             <option value="1">1
                             </option>
@@ -49,7 +55,7 @@
                             <option value="12">12</option>
                             <option value="13">13</option>
                             <option value="14">14</option>
-                        </select>
+                        </select> --}}
                     </div>
                     <div class="col">
                         <br>
@@ -112,6 +118,15 @@
                     <div class="col">
                         <label class="form-label" for="form6Example1">Region :
                             {{ $absents->first()->student->classroom->region }}
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="form6Example1">Jumlah Mahasiswa :
+                            {{ $absents->first()->schedule->total_students }}
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="form6Example1">
                         </label>
                     </div>
                 </div>

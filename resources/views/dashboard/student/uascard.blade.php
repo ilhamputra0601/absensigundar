@@ -7,14 +7,14 @@
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dashboardstudent">{{ $page }}</a></li>
-                    <li class="breadcrumb-item active">Kartu Ujian</li>
+                    <li class="breadcrumb-item active">Kartu UAS</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
         <section class="section">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Kartu Uts</h5>
+                    <h5 class="card-title">Kartu UAS</h5>
                     <div id="busetdah_keren_banget_ham" class="card border border-primary rounded-3 shadow-lg "
                         style=" max-width: 500px;">
                         <div class="card-header bg-light text-center">
@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                             <hr class="mx-3 text-primary" style="margin-top: -10px">
-                            <h3 class="pb-2"><strong>KARTU <br> UJIAN TENGAH SEMESTER</strong></h3>
+                            <h3 class="pb-2"><strong>KARTU <br> UJIAN AKHIR SEMESTER</strong></h3>
                         </div>
                         <div class="card-body border  rounded-3 mx-3 mb-3 text-dark">
                             <div class="d-flex flex-row mt-3">
@@ -80,7 +80,7 @@
                             </table>
                         </div>
                         <div class="text-center">
-                            <p style="font-size: 14px">Kartu ini harap dibawa selama masa ujian semester (UTS) <br> Sebagai
+                            <p style="font-size: 14px">Kartu ini harap dibawa selama masa ujian semester (UAS) <br> Sebagai
                                 syarat untuk mengikuti ujian</p>
                         </div>
                         <hr style="margin-left:310px; margin-right:13px; margin-bottom: 3px" class="rounded">

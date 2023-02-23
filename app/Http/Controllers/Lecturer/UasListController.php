@@ -25,7 +25,7 @@ class UasListController extends Controller
     public function search(Request $request)
     {
         $schedules = Schedule::where('lecturer_nidn', auth()->user()->nidn)->get();
-        $threshold = Threshold::where('id', 2)->first();
+        $threshold = Threshold::where('id', 1)->first();
         $schedule_id = $request->input('schedule_id');
         $absents = Absent::where('schedule_id', $schedule_id)->get();
         $students_id = Absent::where('schedule_id', $schedule_id)

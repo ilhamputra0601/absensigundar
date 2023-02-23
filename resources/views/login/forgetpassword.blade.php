@@ -11,7 +11,8 @@
                             <div class="d-flex justify-content-center py-4">
                                 <a href="/" class="logo d-flex align-items-center w-auto">
                                     <img src="img\gundar.png" alt="gunadarma">
-                                    <span class="d-none d-lg-block">Website Absensi Universitas Gunadarma</span>
+                                    <span class="d-none d-lg-block">Website Presensi Jurusan Teknik Informatika Universitas
+                                        Gunadarma</span>
                                 </a>
                             </div><!-- End Logo -->
                             @if (session()->has('success'))

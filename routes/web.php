@@ -83,4 +83,5 @@ Route::get('/dashboardstudent', function () {
 })->middleware(['auth', 'usertypecheck:student']);
 Route::get('/dashboardstudent/attendance', [StudentAttendanceController::class, 'index'])->middleware(['auth', 'usertypecheck:student']);
 Route::get('/dashboardstudent/attendancedetail', [StudentAttendanceController::class, 'search'])->middleware(['auth', 'usertypecheck:student']);
-Route::get('/dashboardstudent/examcard', [ExamCardController::class, 'index'])->middleware(['auth', 'usertypecheck:student']);
+Route::get('/dashboardstudent/utscard', [ExamCardController::class, 'index'])->middleware(['auth', 'usertypecheck:student']);
+Route::get('/dashboardstudent/uascard', [ExamCardController::class, 'index2'])->middleware(['auth', 'usertypecheck:student']);

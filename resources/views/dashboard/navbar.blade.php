@@ -4,7 +4,7 @@
       <div class="d-flex align-items-center justify-content-between">
           <a href="#" class="logo d-flex align-items-center">
               <img src="../img/gundar.png" alt="gundar">
-              <span class="d-none d-lg-block">Website Absensi Gunadarma</span>
+              <span class="d-none d-lg-block">Website Presensi Teknik Informatika</span>
           </a>
           <i class="bi bi-list toggle-sidebar-btn"></i>
       </div>
@@ -114,10 +114,17 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link {{ Request::is('dashboardstudent/examcard') ? '' : 'collapsed' }}"
-                      href="/dashboardstudent/examcard">
+                  <a class="nav-link {{ Request::is('dashboardstudent/utscard') ? '' : 'collapsed' }}"
+                      href="/dashboardstudent/utscard">
                       <i class="bi bi-journal-text"></i>
-                      <span>Kartu Ujian</span>
+                      <span>Kartu UTS</span>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link {{ Request::is('dashboardstudent/uascard') ? '' : 'collapsed' }}"
+                      href="/dashboardstudent/uascard">
+                      <i class="bi bi-journal-text"></i>
+                      <span>Kartu UAS</span>
                   </a>
               </li>
           @endif

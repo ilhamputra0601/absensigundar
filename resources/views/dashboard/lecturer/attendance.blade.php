@@ -27,7 +27,9 @@
                     </div>
                     <div class="col">
                         <label for="week" class="form-label">Minggu ke-</label>
-                        <select id="week" name="week" class="form-select" required>
+                        <br>
+                        <input type="number" name="week" min="1" max="14" required>
+                        {{-- <select id="week" name="week" class="form-select" required>
                             <option value="" style="display: none;">--Minggu ke--</option>
                             <option value="1">1
                             </option>
@@ -44,7 +46,7 @@
                             <option value="12">12</option>
                             <option value="13">13</option>
                             <option value="14">14</option>
-                        </select>
+                        </select> --}}
                     </div>
                     <div class="col">
                         <br>
@@ -99,6 +101,14 @@
                 <div class="row mb-4 ">
                     <div class="col">
                         <label class="form-label" for="form6Example1">Region :
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="form6Example1">Jumlah Mahasiswa :
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="form6Example1">
                         </label>
                     </div>
                 </div>

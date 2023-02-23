@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('major_id');
             $table->string('coursecode',8);
             $table->string('name');
-            $table->char('courseyear',4);
+            $table->char('courseyear',4)->nullable();
             $table->char('SKS',1);
             $table->char('semester',1);
             $table->timestamps();

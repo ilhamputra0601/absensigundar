@@ -11,7 +11,8 @@
                             <div class="d-flex justify-content-center py-5">
                                 <a href="/login" class="logo d-flex align-items-center w-auto">
                                     <img src="img\gundar.png" alt="gunadarma">
-                                    <span class="d-none d-lg-block">Website Absensi Universitas Gunadarma</span>
+                                    <span class="d-none d-lg-block">Website Presensi Jurusan Teknik Informatika Universitas
+                                        Gunadarma</span>
                                 </a>
                                 </a>
                             </div><!-- End Logo -->

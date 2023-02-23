@@ -27,4 +27,9 @@ class Schedule extends Model
     {
         return $this->belongsTo(Classroom::class, 'classroom_name', 'name');
     }
+
+    public function lecturer()
+    {
+        return $this->belongsTo(Lecturer::class, 'lecturer_nidn', 'nidn');
+    }
 }

@@ -12,4 +12,9 @@ class Lecturer extends Model
     public $timestamps = false;
 
     protected $fillable = ['nidn', 'name'];
+
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class, 'lecturer_nidn', 'nidn');
+    }
 }

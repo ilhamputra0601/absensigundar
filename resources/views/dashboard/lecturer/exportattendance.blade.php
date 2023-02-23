@@ -15,6 +15,49 @@
         <div id="printabsents" class="pt-3">
             <h5>Absensi Kelas {{ $schedule->classroom_name }}</h5>
             <hr>
+            <h6>UTS</h6>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">NPM</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">M1</th>
+                        <th scope="col">M2</th>
+                        <th scope="col">M3</th>
+                        <th scope="col">M4</th>
+                        <th scope="col">M5</th>
+                        <th scope="col">M6</th>
+                        <th scope="col">M7</th>
+                        <th scope="col">M8</th>
+                        <th scope="col">M9</th>
+                        <th scope="col">M10</th>
+                        <th scope="col">Persentase</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($table1 as $row)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $row->npm }}</td>
+                            <td>{{ $row->name }}</td>
+                            <td>{{ $row->week1 }}</td>
+                            <td>{{ $row->week2 }}</td>
+                            <td>{{ $row->week3 }}</td>
+                            <td>{{ $row->week4 }}</td>
+                            <td>{{ $row->week5 }}</td>
+                            <td>{{ $row->week6 }}</td>
+                            <td>{{ $row->week7 }}</td>
+                            <td>{{ $row->week8 }}</td>
+                            <td>{{ $row->week9 }}</td>
+                            <td>{{ $row->week10 }}</td>
+                            <td>{{ $row->percentage }}%</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <hr>
+            <h6>UAS</h6>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -39,7 +82,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($table as $row)
+                    @foreach ($table2 as $row)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $row->npm }}</td>

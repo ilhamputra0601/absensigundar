@@ -96,6 +96,15 @@
                                         {{ $absents->first()->student->classroom->region }}
                                     </label>
                                 </div>
+                                <div class="col">
+                                    <label class="form-label" for="form6Example1">Dosen Pengajar :
+                                        {{ $absents->first()->schedule->lecturer->name }}
+                                    </label>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="form6Example1">
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
