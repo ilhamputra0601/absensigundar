@@ -4,10 +4,10 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Dashboard Admin</h1>
+            <h1>{{ $page }}</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/dashboardadmin">Dashboard Admin</a></li>
+                    <li class="breadcrumb-item"><a href="/dashboardadmin">{{ $page }}</a></li>
                     <li class="breadcrumb-item active">Pengaturan Mahasiswa</li>
                 </ol>
             </nav>
@@ -33,8 +33,12 @@
                 <form action="/dashboardadmin/studentimport" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
+                        @error('file')
+                            <div class="alert alert-danger">File Excel Tidak Valid</div>
+                        @enderror
                         <label class="form-label" for="customFile">Masukan/Perbarui List Mahasiswa</label>
-                        <input type="file" class="form-control" id="customFile" name="file" />
+                        <input type="file" class="form-control" id="customFile" name="file"
+                            class="@error('file') is-invalid @enderror" />
                         <button class="btn btn-primary mt-2" type="submit">Upload</button>
                     </div>
                 </form>

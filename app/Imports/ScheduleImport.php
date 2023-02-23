@@ -8,10 +8,10 @@ use Maatwebsite\Excel\Concerns\ToModel;
 class ScheduleImport implements ToModel
 {
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+     * @param array $row
+     *
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
     public function model(array $row)
     {
         return new Schedule([
@@ -19,7 +19,8 @@ class ScheduleImport implements ToModel
             'course_name' => $row[2],
             'location_name' => $row[3],
             'time_description' => $row[4],
-            'lecturer_nidn' => $row[5]
+            'lecturer_nidn' => $row[5],
+            'academic_year' => $row[6]
         ]);
     }
 }

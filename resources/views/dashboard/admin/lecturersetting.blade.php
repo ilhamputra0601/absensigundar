@@ -4,10 +4,10 @@
     <main id="main" class="main">
         {{-- Page Title --}}
         <div class="pagetitle">
-            <h1>Dashboard Admin</h1>
+            <h1>{{ $page }}</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/dashboardadmin">Dashboard Admin</a></li>
+                    <li class="breadcrumb-item"><a href="/dashboardadmin">{{ $page }}</a></li>
                     <li class="breadcrumb-item active">Pengaturan Dosen</li>
                 </ol>
             </nav>
@@ -37,16 +37,24 @@
                 <form action="/dashboardadmin/lecturerimport" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-5">
+                        @error('file')
+                            <div class="alert alert-danger">File Excel Tidak Valid</div>
+                        @enderror
                         <label class="form-label" for="customFile">Masukan List Dosen</label>
-                        <input type="file" class="form-control" id="customFile" name="file" />
+                        <input type="file" class="form-control" id="customFile" name="file"
+                            class="@error('file') is-invalid @enderror" />
                         <button class="btn btn-primary mt-2" type="submit">Upload</button>
                     </div>
                 </form>
                 <form action="/dashboardadmin/scheduleimport" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
+                        @error('schedule')
+                            <div class="alert alert-danger">File Excel Tidak Valid</div>
+                        @enderror
                         <label class="form-label" for="customFile">Masukkan Jadwal Dosen</label>
-                        <input type="file" class="form-control" id="customFile" name="file" />
+                        <input type="file" class="form-control" id="customFile" name="schedule"
+                            class="@error('schedule') is-invalid @enderror" />
                         <button class="btn btn-primary mt-2" type="submit">Upload</button>
                     </div>
                 </form>

@@ -10,7 +10,7 @@
             <h5>Nama : {{ auth()->user()->name }}</h5>
             <h5>Email : {{ auth()->user()->email }}</h5>
             <hr>
-            <form action="/dashboardadmin/profile" method="POST">
+            <form action="/dashboard/profile" method="POST">
                 @csrf
                 <input type="email" name="email" id="email">
                 <button class="btn btn-primary m-2" type="submit">Ubah Email</button>

@@ -42,54 +42,57 @@ class DatabaseSeeder extends Seeder
         //dummy excel
         Lecturer::create([
             'nidn' => '1234567890',
-            'name' => 'Ricky Dosen'
+            'name' => 'User Dosen1'
+        ]);
+        Lecturer::create([
+            'nidn' => '1234567891',
+            'name' => 'User Dosen2'
         ]);
 
         //dummy excel
         Student::create([
             'classroom_name' => '1IA01',
-            'npm' => '56418102',
-            'name' => 'Ricky Student'
+            'npm' => '56418001',
+            'name' => 'User Mahasiswa1'
         ]);
 
         Student::create([
             'classroom_name' => '1IA01',
-            'npm' => '56418103',
-            'name' => 'Ricky Student2'
+            'npm' => '56418002',
+            'name' => 'User Mahasiswa2'
         ]);
 
         Student::create([
             'classroom_name' => '1IA01',
-            'npm' => '56418104',
-            'name' => 'Ricky Student3'
+            'npm' => '56418003',
+            'name' => 'User Mahasiswa3'
         ]);
 
         User::create([
             'usertype_id' => 1,
-            'name' => 'Ricky Admin',
-            'email' => 'ricky.admin@gmail.com',
+            'name' => 'User Admin',
+            'email' => 'user.admin@gmail.com',
             'password' => Hash::make('12345678')
         ]);
 
         User::create([
             'usertype_id' => 2,
-            'name' => 'Ricky Dosen',
-            'email' => 'ricky.dosen@gmail.com',
+            'name' => 'User Dosen1',
+            'email' => 'user.dosen1@gmail.com',
             'password' => Hash::make('12345678'),
             'nidn' => '1234567890'
         ]);
 
         User::create([
             'usertype_id' => 3,
-            'name' => 'Ricky Mahasiswa',
-            'email' => 'ricky.mahasiswa@gmail.com',
+            'name' => 'User Mahasiswa1',
+            'email' => 'user.mahasiswa1@gmail.com',
             'password' => Hash::make('12345678'),
-            'npm' => '56418102'
+            'npm' => '56418001'
         ]);
 
         for ($i = 1; $i <= 28; $i++) {
             $region = null;
-
             if ($i <= 20) {
                 $region = 'Depok';
             } elseif ($i <= 27) {
@@ -97,17 +100,14 @@ class DatabaseSeeder extends Seeder
             } else {
                 $region = 'Cengkareng';
             }
-
             Classroom::insert([
                 'name' => '1IA' . str_pad($i, 2, '0', STR_PAD_LEFT),
                 'region' => $region,
                 'major_id' => 1
             ]);
         }
-
         for ($i = 1; $i <= 28; $i++) {
             $region = null;
-
             if ($i <= 19) {
                 $region = 'Depok';
             } elseif ($i <= 26) {
@@ -115,17 +115,14 @@ class DatabaseSeeder extends Seeder
             } else {
                 $region = 'Cengkareng';
             }
-
             Classroom::insert([
                 'name' => '2IA' . str_pad($i, 2, '0', STR_PAD_LEFT),
                 'region' => $region,
                 'major_id' => 1
             ]);
         }
-
         for ($i = 1; $i <= 21; $i++) {
             $region = null;
-
             if ($i <= 15) {
                 $region = 'Depok';
             } elseif ($i <= 20) {
@@ -133,7 +130,6 @@ class DatabaseSeeder extends Seeder
             } else {
                 $region = 'Cengkareng';
             }
-
             Classroom::insert([
                 'name' => '3IA' . str_pad($i, 2, '0', STR_PAD_LEFT),
                 'region' => $region,
@@ -162,7 +158,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Major::create([
-            'name' => 'Informatika',
+            'name' => 'Teknik Informatika',
             'faculty_id' => 1
         ]);
 
@@ -170,27 +166,28 @@ class DatabaseSeeder extends Seeder
             'major_id' => 1,
             'coursecode' => 'HM045101',
             'name' => 'Ilmu Budaya Dasar',
-            'academicyear' => '2012',
+            'courseyear' => '2012',
             'SKS' => '1',
             'semester' => 1
         ]);
 
         Location::create([
-            'name' => 'Kampus E'
+            'name' => 'E112'
         ]);
 
         Time::create([
-            'timecode' => 'SEN1',
-            'description' => 'Senin 08.00 - 09.00'
+            'timecode' => '1/2',
+            'description' => '08.00 - 09.00'
         ]);
 
         //dummy excel
         Schedule::create([
             'classroom_name' => '1IA01',
             'course_name' => 'Ilmu Budaya Dasar',
-            'location_name' => 'Kampus D',
-            'time_description' => 'Senin 08.00 - 09.00',
-            'lecturer_nidn' => '1234567890'
+            'location_name' => 'E112',
+            'time_description' => '1/2',
+            'lecturer_nidn' => '1234567890',
+            'academic_year' => 'PTA/ATA 2022/2023'
         ]);
 
         Absenttype::create([
@@ -207,7 +204,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         //Auto after Schedule Upload
-        for($i=1;$i<=14; $i++){
+        for ($i = 1; $i <= 14; $i++) {
             Absent::create([
                 'schedule_id' => 1,
                 'student_id' => 1,
@@ -215,7 +212,7 @@ class DatabaseSeeder extends Seeder
                 'week' => $i
             ]);
         }
-        for($i=1;$i<=14; $i++){
+        for ($i = 1; $i <= 14; $i++) {
             Absent::create([
                 'schedule_id' => 1,
                 'student_id' => 2,
@@ -223,7 +220,7 @@ class DatabaseSeeder extends Seeder
                 'week' => $i
             ]);
         }
-        for($i=1;$i<=14; $i++){
+        for ($i = 1; $i <= 14; $i++) {
             Absent::create([
                 'schedule_id' => 1,
                 'student_id' => 3,
@@ -242,13 +239,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Threshold::create([
-            'name' => 'UTS',
-            'value' => '7'
-        ]);
-
-        Threshold::create([
-            'name' => 'UAS',
-            'value' => '10'
+            'name' => 'Minimum Percentage',
+            'value' => '70'
         ]);
     }
 }
