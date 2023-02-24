@@ -63,6 +63,7 @@ class LecturerAttendanceController extends Controller
         $table1 = Absent::where('schedule_id', $schedule->id)
             ->leftjoin('absenttypes', 'absents.absenttype_id', '=', 'absenttypes.id')
             ->join('students', 'absents.student_id', '=', 'students.id')
+            ->whereIn('absents.week', range(1, 10))
             ->select('students.npm', 'students.name')
             ->addSelect(DB::raw("MAX(CASE WHEN absents.week = 1 THEN IFNULL(absenttypes.name, '') ELSE NULL END) AS 'week1'"))
             ->addSelect(DB::raw("MAX(CASE WHEN absents.week = 2 THEN IFNULL(absenttypes.name, '') ELSE NULL END) AS 'week2'"))

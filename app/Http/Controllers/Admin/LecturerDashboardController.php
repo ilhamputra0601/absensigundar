@@ -49,12 +49,15 @@ class LecturerDashboardController extends Controller
             'file' => 'required|mimes:xlsx'
         ]);
 
-        Lecturer::truncate();
-        $file = $request->file('file');
-        $filename = $file->getClientOriginalName();
-        $file->move('LecturerData', $filename);
-
-        Excel::import(new LecturerImport, public_path('/LecturerData/' . $filename));
+        try{
+            Lecturer::truncate();
+            $file = $request->file('file');
+            $filename = $file->getClientOriginalName();
+            $file->move('LecturerData', $filename);
+            Excel::import(new LecturerImport, public_path('/LecturerData/' . $filename));
+        } catch (\Exception $e){
+            return back()->with('error', 'Data Excel Tidak Valid');
+        }
         return back()->with('success', 'Data Dosen Telah Di Upload');
     }
 
@@ -68,26 +71,30 @@ class LecturerDashboardController extends Controller
         $request->validate([
             'schedule' => 'required|mimes:xlsx'
         ]);
-        Schedule::truncate();
-        $file = $request->file('schedule');
-        $filename = $file->getClientOriginalName();
-        $file->move('ScheduleData', $filename);
 
-        Excel::import(new ScheduleImport, public_path('/ScheduleData/' . $filename));
-        Absent::truncate();
-        $schedules = Schedule::get()->all();
-        foreach ($schedules as $schedule) {
-            $students = $schedule->classroom->students;
-            foreach ($students as $student) {
-                for ($i = 1; $i <= 14; $i++) {
-                    Absent::create([
-                        'schedule_id' => $schedule->id,
-                        'student_id' => $student->id,
-                        'absenttype_id' => null,
-                        'week' => $i
-                    ]);
+        try{
+            Schedule::truncate();
+            $file = $request->file('schedule');
+            $filename = $file->getClientOriginalName();
+            $file->move('ScheduleData', $filename);
+            Excel::import(new ScheduleImport, public_path('/ScheduleData/' . $filename));
+            Absent::truncate();
+            $schedules = Schedule::get()->all();
+            foreach ($schedules as $schedule) {
+                $students = $schedule->classroom->students;
+                foreach ($students as $student) {
+                    for ($i = 1; $i <= 14; $i++) {
+                        Absent::create([
+                            'schedule_id' => $schedule->id,
+                            'student_id' => $student->id,
+                            'absenttype_id' => null,
+                            'week' => $i
+                        ]);
+                    }
                 }
             }
+        } catch (\Exception $e){
+            return back()->with('error', 'Data Excel Tidak Valid');
         }
         return back()->with('success', 'Data Jadwal Telah Di Upload');
     }

@@ -15,12 +15,14 @@ class ScheduleImport implements ToModel
     public function model(array $row)
     {
         return new Schedule([
+            'id' => $row[0],
             'classroom_name' => $row[1],
             'course_name' => $row[2],
             'location_name' => $row[3],
             'time_description' => $row[4],
             'lecturer_nidn' => $row[5],
-            'academic_year' => $row[6]
+            'academic_year' => $row[6],
+            'total_students' => $row[7]
         ]);
     }
 }

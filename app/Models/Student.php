@@ -11,7 +11,7 @@ class Student extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['classroom_name', 'npm', 'name'];
+    protected $fillable = ['id','classroom_name', 'npm', 'name'];
 
     public function classroom()
     {

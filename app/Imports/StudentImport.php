@@ -12,9 +12,11 @@ class StudentImport implements ToModel
     *
     * @return \Illuminate\Database\Eloquent\Model|null
     */
+
     public function model(array $row)
     {
         return new Student([
+            'id' => $row[0],
             'classroom_name' => $row[1],
             'npm' => $row[2],
             'name' => $row[3]

@@ -45,12 +45,16 @@ class StudentDashboardController extends Controller
         $request->validate([
             'file' => 'required|mimes:xlsx'
         ]);
-        Student::truncate();
-        $file = $request->file('file');
-        $filename = $file->getClientOriginalName();
-        $file->move('StudentData', $filename);
-
-        Excel::import(new StudentImport, public_path('/StudentData/' . $filename));
+        
+        try{
+            Student::truncate();
+            $file = $request->file('file');
+            $filename = $file->getClientOriginalName();
+            $file->move('StudentData', $filename);
+            Excel::import(new StudentImport, public_path('/StudentData/' . $filename));
+        } catch (\Exception $e){
+            return back()->with('error', 'Data Excel Tidak Valid');
+        }
         return back()->with('success', 'Data Mahasiswa Telah Di Upload');
     }
 }

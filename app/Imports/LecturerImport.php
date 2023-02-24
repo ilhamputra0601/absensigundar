@@ -15,6 +15,7 @@ class LecturerImport implements ToModel
     public function model(array $row)
     {
         return new Lecturer([
+            'id' => $row[0],
             'nidn' => $row[1],
             'name' => $row[2]
         ]);

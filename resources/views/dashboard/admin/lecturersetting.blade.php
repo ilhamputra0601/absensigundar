@@ -28,6 +28,11 @@
                             {{ session('success') }}
                         </div>
                     @endif
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <input type="hidden" name="usertype_id" value="2">
                     <input id="body" type="hidden" name="body" value="{{ $dashboardlecturer->body }}">
                     <trix-editor input="body"></trix-editor>
@@ -40,6 +45,11 @@
                         @error('file')
                             <div class="alert alert-danger">File Excel Tidak Valid</div>
                         @enderror
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <label class="form-label" for="customFile">Masukan List Dosen</label>
                         <input type="file" class="form-control" id="customFile" name="file"
                             class="@error('file') is-invalid @enderror" />

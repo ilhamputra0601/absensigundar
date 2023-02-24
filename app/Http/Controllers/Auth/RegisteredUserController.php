@@ -62,7 +62,11 @@ class RegisteredUserController extends Controller
 
             Auth::login($user);
 
-            return redirect(RouteServiceProvider::HOME);
+            if($user->usertype_id == 2){
+                return redirect('/dashboardlecturer')->with('success','Akun Berhasil Terdaftar!');
+            } else {
+                return redirect('/dashboardstudent')->with('success','Akun Berhasil Terdaftar!');
+            }
         }
     }
 }

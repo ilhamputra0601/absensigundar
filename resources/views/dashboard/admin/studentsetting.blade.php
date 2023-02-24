@@ -36,6 +36,11 @@
                         @error('file')
                             <div class="alert alert-danger">File Excel Tidak Valid</div>
                         @enderror
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <label class="form-label" for="customFile">Masukan/Perbarui List Mahasiswa</label>
                         <input type="file" class="form-control" id="customFile" name="file"
                             class="@error('file') is-invalid @enderror" />

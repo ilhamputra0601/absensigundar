@@ -11,7 +11,7 @@ class Schedule extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['classroom_name', 'course_name', 'location_name', 'time_description', 'lecturer_nidn', 'academic_year'];
+    protected $fillable = ['classroom_name', 'course_name', 'location_name', 'time_description', 'lecturer_nidn', 'academic_year','total_students'];
 
     public function absents()
     {
