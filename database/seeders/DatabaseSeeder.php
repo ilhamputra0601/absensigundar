@@ -163,15 +163,15 @@ class DatabaseSeeder extends Seeder
         Course::create([
             'major_id' => 1,
             'coursecode' => 'HM045101',
-            'name' => 'Ilmu Budaya Dasar',
+            'name' => 'Algoritma dan Pemrograman 1',
             'courseyear' => '2012',
-            'SKS' => 1,
+            'SKS' => 2,
             'semester' => 1
         ]);
         Course::create([
             'major_id' => 1,
             'coursecode' => 'PP000207',
-            'name' => 'Pendidikan Kewarganegaraan',
+            'name' => 'Statistika 1',
             'courseyear' => '2012',
             'SKS' => 2,
             'semester' => 1
@@ -179,7 +179,7 @@ class DatabaseSeeder extends Seeder
         Course::create([
             'major_id' => 1,
             'coursecode' => 'IT045204',
-            'name' => 'Bahasa Inggris',
+            'name' => 'Bahasa Inggris 1',
             'courseyear' => '2012',
             'SKS' => 2,
             'semester' => 1
@@ -195,7 +195,7 @@ class DatabaseSeeder extends Seeder
         Course::create([
             'major_id' => 1,
             'coursecode' => 'IT045210',
-            'name' => 'Matematika Dasar 1',
+            'name' => 'Matematika Informatika 3',
             'courseyear' => '2012',
             'SKS' => 2,
             'semester' => 1
@@ -203,7 +203,7 @@ class DatabaseSeeder extends Seeder
         Course::create([
             'major_id' => 1,
             'coursecode' => 'IT045213',
-            'name' => 'Matematika Informatika 1',
+            'name' => 'Sistem Informasi',
             'courseyear' => '2012',
             'SKS' => 2,
             'semester' => 1
@@ -211,7 +211,7 @@ class DatabaseSeeder extends Seeder
         Course::create([
             'major_id' => 1,
             'coursecode' => 'IT045301',
-            'name' => 'Algoritma dan Pemrograman 1',
+            'name' => 'Sistem Basis Data 1',
             'courseyear' => '2012',
             'SKS' => 3,
             'semester' => 1
@@ -219,8 +219,7 @@ class DatabaseSeeder extends Seeder
         Course::create([
             'major_id' => 1,
             'coursecode' => 'IT045121',
-            'name' => 'Praktikum Algoritma dan 
-            Pemrograman 1',
+            'name' => 'Pemrograman WEB',
             'courseyear' => '2012',
             'SKS' => 1,
             'semester' => 1
@@ -228,8 +227,7 @@ class DatabaseSeeder extends Seeder
         Course::create([
             'major_id' => 1,
             'coursecode' => 'IT045220',
-            'name' => 'Pengantar Teknologi Komputer dan 
-            Informatika',
+            'name' => 'Pengantar Bisnis Informatika',
             'courseyear' => '2012',
             'SKS' => 2,
             'semester' => 1
@@ -237,10 +235,18 @@ class DatabaseSeeder extends Seeder
         Course::create([
             'major_id' => 1,
             'coursecode' => 'IT045124',
-            'name' => 'Praktikum Fisika Dasar',
+            'name' => 'Teknik Kompilasi',
             'courseyear' => '2012',
             'SKS' => 1,
             'semester' => 1
+        ]);
+        Course::create([
+            'major_id' => 1,
+            'coursecode' => 'MD4321',
+            'name' => 'Pengantar Pengolahan Citra',
+            'courseyear' => '2018',
+            'SKS' => 3,
+            'semester' => 7
         ]);
 
         //useless
